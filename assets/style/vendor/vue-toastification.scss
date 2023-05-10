@@ -1,0 +1,265 @@
+@import "~vuetify/src/components/VSnackbar/_variables.scss";
+@import "~vuetify/src/components/VBtn/_variables.scss";
+@import "../variables.scss";
+
+$vt-container-text-color: map-get($shades, 'white' );
+$vt-container-margin: $snackbar-wrapper-margin;
+
+$vt-namespace: 'Vue-Toastification' !default;
+$vt-toast-background: map-get($shades, 'white' );
+$vt-toast-border-radius: map-get($rounded, null);
+$vt-toast-min-width: $snackbar-wrapper-min-width;
+$vt-toast-max-width: $snackbar-wrapper-max-width;
+$vt-toast-min-height: $snackbar-wrapper-min-height;
+$vt-toast-max-height: 800px !default;
+$vt-toast-padding: $snackbar-content-padding;
+$vt-toast-font-size: $snackbar-content-font-size;
+$vt-toast-font-weight: $snackbar-content-font-weight;
+$vt-toast-letter-spacing: $snackbar-content-letter-spacing;
+$vt-toast-line-height: $snackbar-content-line-height;
+$vt-toast-font-family: $body-font-family;
+$vt-toast-margin-gap: 1rem;
+$vt-toast-mobile-margin-gap: .5rem;
+
+$vt-color-default: $snackbar-background-color;
+$vt-text-color-default: $vt-container-text-color;
+$vt-color-info: map-get($shades, 'black' );
+$vt-text-color-info: $snackbar-color;
+$vt-color-success: map-get($green, 'base' );
+$vt-text-color-success: $vt-text-color-default;
+$vt-color-warning: map-get($red, 'accent-2' );
+$vt-text-color-warning: $vt-text-color-default;
+$vt-color-error: $vt-color-default;
+$vt-text-color-error: map-get($red, 'accent-2' );
+
+$vt-btn-margin: $snackbar-wrapper-margin;
+$vt-btn-color: $vt-container-text-color;
+$vt-btn-error-color: $error-color;
+$vt-btn-text-color: $accent-color;
+$vt-btn-text-error-color: map-get($shades, 'white' );
+
+$vt-color-progress-default: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55) !default;
+
+$vt-mobile: map-get($display-breakpoints, 'xs-only') !default;
+$vt-not-mobile: map-get($display-breakpoints, 'sm-and-up') !default;
+
+
+@import "vue-toastification/src/scss/_variables";
+
+.#{$vt-namespace}__container {
+  z-index: $vt-z-index;
+  position: fixed;
+  width: $vt-toast-max-width;
+  box-sizing: border-box;
+  display: flex;
+  gap: $vt-toast-margin-gap;
+  min-height: 100%;
+  color: $vt-container-text-color;
+  flex-direction: column;
+  pointer-events: none;
+
+  @media #{$vt-not-mobile} {
+    gap: $vt-toast-mobile-margin-gap;
+
+    &.top-left,
+    &.top-right,
+    &.top-center {
+      top: $vt-container-margin;
+    }
+
+    &.bottom-left,
+    &.bottom-right,
+    &.bottom-center {
+      bottom: $vt-container-margin;
+      flex-direction: column-reverse;
+    }
+
+    &.top-left,
+    &.bottom-left {
+      left: $vt-container-margin;
+      .#{$vt-namespace}__toast {
+        margin-right: auto;
+      }
+      // Firefox does not apply rtl rules to containers and margins, it appears.
+      // See https://github.com/Maronato/vue-toastification/issues/179
+      @supports not (-moz-appearance:none) {
+        .#{$vt-namespace}__toast--rtl {
+          margin-right: unset;
+          margin-left: auto;
+        }
+      }
+    }
+
+    &.top-right,
+    &.bottom-right {
+      right: $vt-container-margin;
+      .#{$vt-namespace}__toast {
+        margin-left: auto;
+      }
+      // Firefox does not apply rtl rules to containers and margins, it appears.
+      // See https://github.com/Maronato/vue-toastification/issues/179
+      @supports not (-moz-appearance:none) {
+        .#{$vt-namespace}__toast--rtl {
+          margin-left: unset;
+          margin-right: auto;
+        }
+      }
+    }
+
+    &.top-center,
+    &.bottom-center {
+      left: 50%;
+      margin-left: -($vt-toast-max-width / 2);
+      .#{$vt-namespace}__toast {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+
+  @media #{$vt-mobile} {
+    width: 100vw;
+    padding: 0;
+    left: 0;
+    margin: 0;
+    .#{$vt-namespace}__toast {
+      width: 100%;
+    }
+    &.top-left,
+    &.top-right,
+    &.top-center {
+      top: 0;
+    }
+    &.bottom-left,
+    &.bottom-right,
+    &.bottom-center {
+      bottom: 0;
+      flex-direction: column-reverse;
+    }
+  }
+}
+
+.#{$vt-namespace}__close-button {
+  font-weight: map-get($font-weights, 'medium');
+  font-size: 18px;
+  line-height: 1;
+  width: #{map-get($btn-sizes, 'small')}px;
+  height: #{map-get($btn-sizes, 'small')}px;
+  margin-right: $vt-btn-margin;
+  background-color: $vt-btn-color;
+  border-color: $vt-btn-color;
+  color: $vt-btn-text-color;
+  align-items: center;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  outline: 0;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.#{$vt-namespace}__toast {
+  display: flex;
+  position: relative;
+  max-height: $vt-toast-max-height;
+  min-height: $vt-toast-min-height;
+  box-sizing: border-box;
+  border-radius: $vt-toast-border-radius;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1), 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  justify-content: space-between;
+  align-items: center;
+  max-width: $vt-toast-max-width;
+  min-width: $vt-toast-min-width;
+  pointer-events: auto;
+  overflow: hidden;
+  // overflow: hidden + border-radius does not work properly on Safari
+  // The following magic line fixes it
+  // https://stackoverflow.com/a/58283449
+  transform: translateZ(0);
+  direction: ltr;
+  &--rtl {
+    direction: rtl;
+  }
+
+  &--default {
+    background-color: $vt-color-default;
+    color: $vt-text-color-default;
+  }
+  &--info {
+    background-color: $vt-color-info;
+    color: $vt-text-color-info;
+
+    .#{$vt-namespace}__close-button {
+      background-color: $vt-color-info;
+      color: $vt-container-text-color;
+      font-size: 34px;
+      font-weight: map-get($font-weights, 'bold');
+    }
+  }
+  &--success {
+    background-color: $vt-color-success;
+    color: $vt-text-color-success;
+  }
+  &--error {
+    background-color: $vt-color-error;
+    color: $vt-text-color-error;
+
+    .#{$vt-namespace}__close-button {
+      background-color: $vt-btn-error-color;
+      color: $vt-btn-text-error-color;
+    }
+  }
+  &--warning {
+    background-color: $vt-color-warning;
+    color: $vt-text-color-warning;
+  }
+
+  @media #{$vt-mobile} {
+    border-radius: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  &-component-body, &-body {
+    font-family: $vt-toast-font-family;
+    line-height: $vt-toast-line-height;
+    font-size: $vt-toast-font-size;
+    font-weight: $vt-toast-font-weight;
+    letter-spacing: $vt-toast-letter-spacing;
+  }
+
+  &-body {
+    flex-grow: 1;
+    padding: $vt-toast-padding;
+    word-break: break-word;
+    white-space: pre-wrap;
+  }
+
+  &-component-body {
+    flex: 1;
+  }
+
+  &.disable-transition {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+@import "vue-toastification/src/scss/_progressBar";
+@import "vue-toastification/src/scss/_icon";
+
+.#{$vt-namespace}__fade-enter-active {
+  opacity: 1;
+}
+.#{$vt-namespace}__fade-leave-active {
+  opacity: 0;
+}
+.#{$vt-namespace}__fade-move {
+  transition-property: opacity, transform;
+}

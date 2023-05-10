@@ -1,0 +1,50 @@
+{
+  "header": {
+    "unregistered": {
+      "links": {
+        "support": "поддержка",
+        "donate": "донат"
+      },
+      "actions": {
+        "sign_in": "войти",
+        "sign_up": "зарегестрироваться"
+      }
+    }
+  },
+  "player": {
+    "unregistered_bar": {
+      "title": "Предварительный просмотр Spotyfree",
+      "subtitle": "Зарегистрируйтесь, чтобы получать неограниченное количество песен и подкастов со случайной рекламой. Кредитная карта не нужна.",
+      "actions": {
+        "sign_up": {
+          "label": "Зарегестрироваться"
+        }
+      }
+    }
+  },
+  "footer": {
+    "company": {
+      "title": "Company",
+      "links": {
+        "about": "About",
+        "jobs": "Jobs",
+        "for_record": "For Record"
+      }
+    },
+    "communities": {
+      "title": "Communities",
+      "links": {
+        "artist": "Artist",
+        "developers": "Developers",
+        "vendors": "Vendors"
+      }
+    },
+    "usefull_links": {
+      "title": "Usefull links",
+      "links": {
+        "support": "Support",
+        "mobile_app": "Mobile app (coming soon)"
+      }
+    }
+  }
+}

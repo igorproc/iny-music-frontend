@@ -1,0 +1,27 @@
+.no-scroll {
+  overflow: hidden !important;
+  max-height: 100vh !important;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+
+  &.a0 {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.ws-no-wrap {
+  white-space: nowrap;
+}
+
+.ow-break-word{
+  overflow-wrap: break-word;
+}

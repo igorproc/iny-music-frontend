@@ -1,0 +1,11 @@
+@import "./helpers";
+
+/*
+  Fixing the slider bug with products,
+  the bug is that you cannot use overflow-x: hidden; and overflow-y: visible
+  at the same time. Because of this,
+  the additional info in the product card does not fit in the block.
+*/
+.v-application {
+  overflow: hidden !important;
+}

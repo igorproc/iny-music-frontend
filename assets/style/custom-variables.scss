@@ -1,0 +1,9 @@
+@import "~vuetify/src/styles/tools";
+@import "~vuetify/src/styles/settings";
+
+// Theme variables
+@import "./variables.extend";
+// The variables you want to modify
+@import "./variables.override";
+
+@import '~vuetify/src/styles/styles.sass';

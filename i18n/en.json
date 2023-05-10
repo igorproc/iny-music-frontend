@@ -1,0 +1,50 @@
+{
+  "header": {
+    "unregistered": {
+      "links": {
+        "support": "support",
+        "donate": "donate"
+      },
+      "actions": {
+        "sign_in": "sign in",
+        "sign_up": "sign up"
+      }
+    }
+  },
+  "player": {
+    "unregistered_bar": {
+      "title": "Preview of Spotyfree",
+      "subtitle": "Sign up to get unlimited songs and podcasts with occasional ads. No credit card needed.",
+      "actions": {
+        "sign_up": {
+          "label": "Sign Up"
+        }
+      }
+    }
+  },
+  "footer": {
+    "company": {
+      "title": "Company",
+      "links": {
+        "about": "About",
+        "jobs": "Jobs",
+        "for_record": "For Record"
+      }
+    }
+  },
+  "communities": {
+    "title": "Communities",
+    "links": {
+      "artist": "Artist",
+      "developers": "Developers",
+      "vendors": "Vendors"
+    }
+  },
+  "usefull_links": {
+    "title": "Usefull links",
+    "links": {
+      "support": "Support",
+      "mobile_app": "Mobile app (coming soon)"
+    }
+  }
+}
