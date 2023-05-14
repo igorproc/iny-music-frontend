@@ -1,0 +1,18 @@
+mutation createAccountMutation($accountData: NewUserInput!, $clientId: String!) {
+  createUser(userData: $accountData, clientId: $clientId) {
+    uid
+    username
+    password
+    name
+    surname
+    platform
+    gender
+    birthday
+    phone
+    email
+    role
+    avatar_id
+    updated_at
+    created_at
+  }
+}

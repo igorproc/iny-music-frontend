@@ -1,5 +1,6 @@
 <template>
   <div class="sign-up">
+    <UserSignUpInformation />
     <UserSignUpForm />
   </div>
 </template>
@@ -11,3 +12,9 @@ definePageMeta({
   layout: 'login'
 })
 </script>
+
+<style lang="scss">
+.sign-up {
+  width: 400px;
+}
+</style>

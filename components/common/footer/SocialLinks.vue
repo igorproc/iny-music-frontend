@@ -15,7 +15,9 @@
 </template>
 
 <script setup lang="ts">
-const linkList: any = [
+import { Ref, ref } from "vue"
+
+const linkList: Ref<any> = ref([
   {
     id: 0,
     url: '/',
@@ -31,5 +33,5 @@ const linkList: any = [
     url: 'https://github.com/yesfedor/iny-music-frontend',
     icon: 'mdi-github'
   }
-]
+])
 </script>

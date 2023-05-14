@@ -7,6 +7,7 @@
     <div class="unregistred-blank__actions">
       <v-btn
         rounded
+        size="large"
         :ripple="false"
         color="#fff"
         :to="localePath({ name: 'sign-up' })"

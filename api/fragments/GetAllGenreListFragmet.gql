@@ -1,0 +1,4 @@
+fragment GetAllGenreListFragment on GenreModel {
+  gid
+  title
+}

@@ -1,12 +1,12 @@
 import { defineNuxtConfig } from 'nuxt/config'
 import vuetify from "vite-plugin-vuetify"
 
-const isDev = process.env.NODE_ENV !== "production"
 const isSsr = Boolean(process.env.NUXT_SSR)
+const gqlTokenStorageName = process.env.GRAPHQL_TOKEN_STORAGE_NAME || 'gql:default'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: true,
+  ssr: isSsr,
 
   components: [
     {
@@ -27,17 +27,12 @@ export default defineNuxtConfig({
     "@mdi/font/css/materialdesignicons.css"
   ],
 
-  // Imports Configuration
-  imports: {
-    autoImport: false
-  },
-
   // Intilizate Nuxt Modules
   modules: [
     // Doc: https://pinia.vuejs.org/ssr/nuxt.html
     "@pinia/nuxt",
-    // Doc: https://apollo.nuxtjs.org/
-    "@nuxtjs/apollo",
+    // Doc: https://nuxt-graphql-client.web.app/getting-started/quick-start
+    'nuxt-graphql-client',
     // Doc: https://v8.i18n.nuxtjs.org/getting-started/setup
     '@nuxtjs/i18n',
     // Doc: https://github.com/ivodolenc/nuxt-font-loader
@@ -70,12 +65,21 @@ export default defineNuxtConfig({
   },
 
   // Apollo Configuration
-  apollo: {
+  'graphql-client': {
     clients: {
       default: {
-        httpEndpoint: 'http://localhost:4001/graphql'
-      }
-    }
+        host: `${process.env.GRAPHQL_TARGET}${process.env.GRAPHQL_PATH}` || '',
+        token: {
+          type: 'Bearer',
+          name: process.env.GRAPHQL_TOKEN || 'Authorization',
+        },
+        tokenStorage: {
+          mode: 'cookie',
+          name: gqlTokenStorageName,
+        },
+        schema: './schema.graphql'
+      },
+    },
   },
 
   // i18n Configuration

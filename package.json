@@ -9,7 +9,6 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxtjs/apollo": "^5.0.0-alpha.6",
     "@types/node": "^18.16.2",
     "nuxt": "^3.4.2"
   },
@@ -20,7 +19,9 @@
     "@nuxt/typescript-build": "^3.0.1",
     "@nuxtjs/i18n": "^8.0.0-beta.11",
     "@pinia/nuxt": "^0.4.9",
+    "graphql-client": "^2.0.1",
     "nuxt-font-loader": "^2.3.1",
+    "nuxt-graphql-client": "^0.2.27",
     "pinia": "^2.0.35",
     "scss": "^0.2.4",
     "typecheck": "^0.1.2",

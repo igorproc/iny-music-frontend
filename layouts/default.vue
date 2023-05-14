@@ -1,6 +1,6 @@
 <template>
   <v-app class="default">
-    <v-layout :full-height="true" class="default__main d-flex">
+    <v-layout class="default__main d-flex">
       <aside class="main-aside">
         <CommonAside />
       </aside>
@@ -16,7 +16,7 @@
         </footer>
       </v-container>
     </v-layout>
-    <div class="default__player">
+    <div class="default__player-placeholder">
       <PlayerPlaceholder />
     </div>
   </v-app>
@@ -38,6 +38,9 @@ import PlayerPlaceholder from '~/components/player/Placeholder.vue';
     .main-content__footer {
       margin-top: 50px;
     }
+  }
+  .default__player-placeholder {
+    z-index: 901;
   }
 }
 </style>

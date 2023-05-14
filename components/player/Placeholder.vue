@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex align-end w-100 player-placeholder">
+  <div class="d-flex w-100 player-placeholder">
     <Player v-if="isAuth" />
     <PlayerUnregistredBlank v-else />
   </div>

@@ -30,21 +30,21 @@
         "jobs": "Jobs",
         "for_record": "For Record"
       }
-    }
-  },
-  "communities": {
-    "title": "Communities",
-    "links": {
-      "artist": "Artist",
-      "developers": "Developers",
-      "vendors": "Vendors"
-    }
-  },
-  "usefull_links": {
-    "title": "Usefull links",
-    "links": {
-      "support": "Support",
-      "mobile_app": "Mobile app (coming soon)"
+    },
+    "communities": {
+      "title": "Communities",
+      "links": {
+        "artist": "Artist",
+        "developers": "Developers",
+        "vendors": "Vendors"
+      }
+    },
+    "usefull_links": {
+      "title": "Usefull links",
+      "links": {
+        "support": "Support",
+        "mobile_app": "Mobile app (coming soon)"
+      }
     }
   }
 }

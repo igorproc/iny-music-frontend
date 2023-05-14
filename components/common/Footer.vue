@@ -13,13 +13,17 @@
         <CommonFooterSocialLinks />
       </v-col>
     </v-row>
-    <v-divider />
+    <v-divider class="footer__divider" />
+    <div class="footer__copyright">
+      <CommonFooterCopyright />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useI18n } from "vue-i18n"
 import { TFooterLinkList } from "~/types/linkList"
+import CommonFooterCopyright from "~/components/common/footer/Copyright.vue"
 
 const { t } = useI18n()
 const linksList: TFooterLinkList[] = [
@@ -83,3 +87,15 @@ const linksList: TFooterLinkList[] = [
   }
 ]
 </script>
+
+<style lang="scss">
+.footer {
+  .footer__divider {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .footer__copyright {
+    padding-bottom: 132px;
+  }
+}
+</style>
