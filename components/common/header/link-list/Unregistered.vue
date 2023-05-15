@@ -9,7 +9,7 @@
         :ripple="false"
         class="link-list__content-item item"
       >
-        <nuxt-link :to="item.url" class="text-decoration-none item__content">
+        <nuxt-link :to="localePath(item.url)" class="text-decoration-none item__content">
           {{ item.label }}
         </nuxt-link>
       </v-btn>
@@ -28,7 +28,7 @@
         :ripple="false"
         class="link-list__actions-item item"
       >
-      <nuxt-link to="/sign-up" class="text-decoration-none item__content">
+      <nuxt-link :to="localePath({ name: 'sign-up' })" class="text-decoration-none item__content">
           {{ $t('header.unregistered.actions.sign_up') }}
         </nuxt-link>
       </v-btn>

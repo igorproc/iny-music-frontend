@@ -4,7 +4,7 @@
       <v-text-field
         rounded="0"
         variant="outlined"
-        label="day"
+        :label="$t('user.sign_up.input.birthday.day.label')"
         color="success"
         type="number"
         v-model="day"
@@ -24,7 +24,7 @@
       <v-text-field
         rounded="0"
         variant="outlined"
-        label="year"
+        :label="$t('user.sign_up.input.birthday.year.label')"
         color="success"
         type="number"
         v-model="year"

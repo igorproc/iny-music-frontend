@@ -4,7 +4,7 @@
     <nuxt-link
       v-for="link in props.group"
       :key="link.id"
-      :to="link.url"
+      :to="localePath(link.url)"
       class="text-decoration-none mt-2 links-group__item"
     >
       <span class="group__link-label">{{ link.label }}</span>
