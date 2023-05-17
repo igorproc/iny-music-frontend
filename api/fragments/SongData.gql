@@ -1,0 +1,18 @@
+fragment SongDataFragment on Song {
+  artist {
+    id
+    name
+    surname
+    altName
+  }
+  genres
+  feats {
+    name
+    position
+  }
+  title
+  subtitle
+  explicit
+  duration
+  songUrl
+}

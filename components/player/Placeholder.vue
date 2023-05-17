@@ -1,8 +1,8 @@
 <template>
-  <div class="d-flex w-100 player-placeholder">
-    <Player v-if="userStore.userIsAuth" />
+  <v-container fluid class="d-flex player-placeholder">
+    <Player v-if="userStore.userIsAuth" class="h-100" />
     <PlayerUnregistredBlank v-else  />
-  </div>
+  </v-container>
 </template>
 
 <script setup lang="ts">
@@ -12,11 +12,3 @@ import { useUserStore } from "~/store/user";
 
 const userStore = useUserStore()
 </script>
-
-<style lang="scss">
-.player-placeholder {
-  position: fixed;
-  bottom: 0;
-  height: 100px;
-}
-</style>

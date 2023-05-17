@@ -37,7 +37,7 @@
         <v-radio value="male" label="male" color="surface" />
         <v-radio value="female" label="female" color="surface" />
       </v-radio-group>
-      <UserBirthdayForm @update-birthday="updateBirthday" />
+      <UserSignUpBirthdayForm @update-birthday="updateBirthday" />
       <v-text-field
         variant="outlined"
         :label="$t('user.sign_up.input.phone.label')"
@@ -54,7 +54,7 @@
 <script setup lang="ts">
 import { ref, defineEmits } from "vue"
 import { TGqlVariables } from "~/types/gql"
-import UserBirthdayForm from "~/components/user/BirthdayForm.vue"
+import UserSignUpBirthdayForm from "~/components/user/sign-up/BirthdayForm.vue"
 import { createAccount } from "~/store/user/auth"
 
 const emit = defineEmits<{
@@ -75,18 +75,8 @@ const repeatPassword = ref<string>('')
 const updateBirthday = (timeStamp: number) => { userData.value.birthday = timeStamp }
 const registerUser = async() => {
   isLoading.value = true
-  const isSuccsess = await createAccount({
-    name: userData.value.name,
-    surname: userData.value.surname,
-    email: userData.value.email,
-    password: userData.value.password,
-    birthday: userData.value.birthday,
-    gender: userData.value.gender,
-    phone: userData.value.phone
-  })
-  if(isSuccsess) {
-    isLoading.value = false
-    emit('sucsess-sign-up')
-  }
+  const isSuccsess = await createAccount(userData.value)
+  if(isSuccsess) emit('sucsess-sign-up')
+  isLoading.value = false
 }
 </script>

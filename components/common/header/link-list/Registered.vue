@@ -7,11 +7,12 @@
       <v-btn icon color="primary" aria-label="friends" class="mr-2">
         <v-icon>mdi-account-group-outline</v-icon>
       </v-btn>
-      <CommonHeaderAccountTrigger />
+      <CommonHeaderAccountMenu/>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import CommonHeaderAccountTrigger from '~/components/common/header/account/trigger.vue'
+import CommonHeaderAccountMenu from '~/components/common/header/account/menu.vue'
+
 </script>
