@@ -52,13 +52,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue"
-import { useI18n } from "vue-i18n"
+import { ref, defineEmits } from "vue"
 import { TGqlVariables } from "~/types/gql"
 import UserBirthdayForm from "~/components/user/BirthdayForm.vue"
 import { createAccount } from "~/store/user/auth"
 
-const { t } = useI18n()
+const emit = defineEmits<{
+  (e: 'sucsess-sign-up'): void
+}>()
+
 const isLoading = ref<boolean>(false)
 const userData = ref<TGqlVariables<'createAccountMutation'>['accountData']>({
   name: '',
@@ -82,6 +84,9 @@ const registerUser = async() => {
     gender: userData.value.gender,
     phone: userData.value.phone
   })
-  if(isSuccsess) isLoading.value = false
+  if(isSuccsess) {
+    isLoading.value = false
+    emit('sucsess-sign-up')
+  }
 }
 </script>

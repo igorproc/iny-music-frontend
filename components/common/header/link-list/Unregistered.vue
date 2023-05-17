@@ -48,13 +48,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, Ref } from "vue"
+import { ref } from "vue"
 import { TLinkItem } from "~/types/linkList"
 import { useI18n } from "vue-i18n"
 
 const { t } = useI18n()
 
-const itemList: Ref<TLinkItem[]> = ref([
+const itemList = ref<TLinkItem[]>([
   {
     id: 0,
     label: t('header.unregistered.links.support'),

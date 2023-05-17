@@ -1,11 +1,5 @@
 mutation createAccountMutation($accountData: RegisterUser!, $clientId: String!) {
   createUser(userData: $accountData, clientId: $clientId) {
-    username
-    gender
-    birthday
-    phone
-    avatarUrl
-    email
-    role
+    ...UserDataFragment
   }
 }

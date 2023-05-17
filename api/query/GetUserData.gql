@@ -1,0 +1,5 @@
+query GetUserDataByUid($uid: Int!) {
+  getUserByUid(id: $uid) {
+    ...UserDataFragment
+  }
+}

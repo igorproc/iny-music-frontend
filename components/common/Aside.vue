@@ -11,10 +11,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, Ref } from "vue"
+import { ref } from "vue"
 import CommonLogo from "~/components/common/Logo.vue"
 
-let asideWidth: Ref<string> = ref("300px")
+let asideWidth = ref<string>("300px")
 const minAsideWidth: number = 100
 const maxAsideWith: number = 600
 

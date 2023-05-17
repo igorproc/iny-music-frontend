@@ -13,7 +13,7 @@ export const dark: ThemeDefinition = {
     secondary: "#FFFFDE",
     error: "#da4f49",
     info: "#00b4d8",
-    success: "1ed760",
+    success: "#1ed760",
     warning: "#FFCC00",
   },
 };

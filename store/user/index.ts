@@ -12,6 +12,7 @@ export const useUserStore = defineStore('user-store', {
     user: null,
   }),
   getters: {
-    userIsAuth: (state) => state.isAuth
+    userIsAuth: (state) => state.isAuth,
+    userAvatar: (state) => state.user?.avatarUrl
   }
 })
