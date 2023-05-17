@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <span v-if="isAuth">is auth</span>
+  <div class="header-links-group">
+    <CommonHeaderLinkListRegistered v-if="userStore.userIsAuth" />
     <CommonHeaderLinkListUnregistered v-else />
   </div>
 </template>
 
 <script setup lang="ts">
-import { Ref, ref } from "vue"
 import CommonHeaderLinkListUnregistered from '~/components/common/header/link-list/Unregistered.vue'
+import { useUserStore } from "~/store/user";
 
-const isAuth: Ref<boolean> = ref(false)
+const userStore = useUserStore()
 </script>

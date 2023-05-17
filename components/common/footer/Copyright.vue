@@ -5,9 +5,9 @@
 </template>
 
 <script setup lang="ts">
-  import { Ref, ref } from "vue"
+  import { ref } from "vue"
 
-  const copyrightData: Ref<string> = ref("© 2023 Spotyfree")
+  const copyrightData = ref<string>("© 2023 Spotyfree")
 </script>
 
 <style lang="scss">

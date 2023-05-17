@@ -4,15 +4,15 @@
       <v-text-field
         rounded="0"
         variant="outlined"
-        label="day"
+        :label="$t('user.sign_up.input.birthday.day.label')"
         color="success"
         type="number"
-        v-model="day"
+        v-model="inputDate.day"
       />
     </v-col>
     <v-col cols="4">
       <v-select
-        v-model="selectedMounth"
+        v-model="inputDate.mounth"
         rounded="0"
         :items="mounths"
         item-value="id"
@@ -24,22 +24,30 @@
       <v-text-field
         rounded="0"
         variant="outlined"
-        label="year"
+        :label="$t('user.sign_up.input.birthday.year.label')"
         color="success"
         type="number"
-        v-model="year"
+        v-model="inputDate.year"
       />
     </v-col>
   </v-row>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue"
+import { ref, watch, defineEmits } from "vue"
+
+interface IinputDate {
+  day: string,
+  mounth: {
+    id: number,
+    label: string
+  },
+  year: string
+}
 
 const emit = defineEmits<{
-  (e: 'update-birthday', payload: number): void
+  (e: 'update-birthday', payload: number): number
 }>()
-
 const mounths = ref<any>([
   {
     id: 1,
@@ -90,11 +98,13 @@ const mounths = ref<any>([
     label: 'декабрь'
   },
 ])
-const day = ref<string>('')
-const year = ref<string>('')
-const selectedMounth= ref<any>(mounths.value[0])
-const birthdayTimestamp = computed<void>(() => {
-  const timeStamp: number = Date.parse(`${day.value}-${selectedMounth.value.id}-${year.value} 00:00:00 GMT`) / 1000
-  emit('update-birthday', timeStamp)
+const inputDate = ref<IinputDate>({
+  day: '',
+  mounth: mounths.value[0],
+  year: ''
 })
+watch(() => inputDate, (newDate) => {
+  const timeStamp: number = Date.parse(`${newDate.value.day}-${newDate.value.mounth.id}-${newDate.value.year} 00:00:00 GMT`) / 1000
+  emit('update-birthday', timeStamp)
+}, { deep: true })
 </script>

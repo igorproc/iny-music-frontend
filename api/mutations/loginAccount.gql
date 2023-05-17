@@ -1,0 +1,5 @@
+mutation loginAccountMutation($loginData: UserLogin!) {
+  loginUser(loginData: $loginData) {
+    ...UserDataFragment
+  }
+}

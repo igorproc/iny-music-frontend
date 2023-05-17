@@ -22,6 +22,39 @@
       }
     }
   },
+  "user": {
+    "sign_up": {
+      "input": {
+        "email": {
+          "label": "email"
+        },
+        "password": {
+          "label": "password"
+        },
+        "repeat_password": {
+          "label": "repeat password"
+        },
+        "name": {
+          "label": "name"
+        },
+        "surname": {
+          "label": "surname"
+        },
+        "birthday": {
+          "day": {
+            "label": "day"
+          },
+          "mounth": {},
+          "year": {
+            "label": "year"
+          }
+        },
+        "phone": {
+          "label": "phone"
+        }
+      }
+    }
+  },
   "footer": {
     "company": {
       "title": "Company",

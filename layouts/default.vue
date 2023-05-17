@@ -16,7 +16,7 @@
         </footer>
       </v-container>
     </v-layout>
-    <div class="default__player-placeholder">
+    <div class="default__player-placeholder w-100">
       <PlayerPlaceholder />
     </div>
   </v-app>
@@ -41,6 +41,9 @@ import PlayerPlaceholder from '~/components/player/Placeholder.vue';
   }
   .default__player-placeholder {
     z-index: 901;
+    position: fixed;
+    bottom: 0;
+    height: 100px;
   }
 }
 </style>

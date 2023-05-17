@@ -27,11 +27,10 @@
 
 <script setup lang="ts">
 import { useRoute, useRouter } from "nuxt/app"
-import { ref, Ref, watch } from "vue"
+import { ref, watch } from "vue"
 
-const isAuth: Ref<boolean> = ref(false)
-const canRouteForward: Ref<boolean> = ref(false)
-const canRouteBack: Ref<boolean> = ref(false)
+const canRouteForward = ref<boolean>(false)
+const canRouteBack = ref<boolean>(false)
 const router = useRouter()
 const route = useRoute()
 

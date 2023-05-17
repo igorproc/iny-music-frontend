@@ -1,22 +1,22 @@
 <template>
-  <div class="sign-up-page">
+  <div class="sign-in-page">
     <UserLoginInformation />
-    <UserSignUpForm @sucsess-sign-up="$router.push(localePath({ name: 'index' }))" />
+    <UserSignInForm @succsess-login="$router.push(localePath({ name: 'index' }))" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { definePageMeta } from "#imports"
 import UserLoginInformation from "~/components/user/LoginInformation.vue"
-import UserSignUpForm from "~/components/user/sign-up/SignUpForm.vue"
+import UserSignInForm from "~/components/user/sign-in/SignInForm.vue"
 
 definePageMeta({
-  layout: 'login'
+  layout: 'login',
 })
 </script>
 
 <style lang="scss">
-.sign-up-page {
+.sign-in-page {
   width: 400px;
 }
 </style>

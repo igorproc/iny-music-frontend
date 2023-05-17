@@ -1,4 +1,3 @@
-import { CookieRef } from "nuxt/app"
 import { defineStore } from "pinia"
 import { getUserPlatform } from "~/utils/getUserPlatform"
 
@@ -15,7 +14,7 @@ export const useDeviceStore = defineStore('device-store', {
   },
   actions: {
     async initilizateClientId(): Promise<void> {
-      const userClientId: CookieRef<string> = useCookie('client_id', { default: () => '', watch: 'shallow' })
+      const userClientId = useCookie<string>('client_id', { default: () => '', watch: 'shallow' })
       if(userClientId.value) {
         this.clientId = userClientId.value
         return

@@ -1,10 +1,9 @@
-import { NewUserInput } from "~/.nuxt/gql/default"
 import { defineStore } from "pinia"
 import { TGqlResult } from "~/types/gql"
 
 type TUserStoreState = {
   isAuth: boolean,
-  user: TGqlResult<'createAccountMutation'> | null
+  user: TGqlResult<'createAccountMutation'>['createUser'] | null
 }
 
 export const useUserStore = defineStore('user-store', {
@@ -13,6 +12,7 @@ export const useUserStore = defineStore('user-store', {
     user: null,
   }),
   getters: {
-    userIsAuth: (state) => state.isAuth
+    userIsAuth: (state) => state.isAuth,
+    userAvatar: (state) => state.user?.avatarUrl
   }
 })

@@ -1,12 +1,11 @@
 import { defineNuxtConfig } from 'nuxt/config'
 import vuetify from "vite-plugin-vuetify"
 
-const isSsr = Boolean(process.env.NUXT_SSR)
 const gqlTokenStorageName = process.env.GRAPHQL_TOKEN_STORAGE_NAME || 'gql:default'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: isSsr,
+  ssr: Boolean(process.env.NUXT_SSR),
 
   components: [
     {
@@ -73,10 +72,8 @@ export default defineNuxtConfig({
           type: 'Bearer',
           name: process.env.GRAPHQL_TOKEN || 'Authorization',
         },
-        tokenStorage: {
-          mode: 'cookie',
-          name: gqlTokenStorageName,
-        },
+        tokenStorage: { mode: 'cookie', name: gqlTokenStorageName },
+        corsOptions: { mode: 'cors', credentials: 'include' },
         schema: './schema.graphql'
       },
     },

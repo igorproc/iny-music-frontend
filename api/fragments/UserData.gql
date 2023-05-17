@@ -1,0 +1,10 @@
+fragment UserDataFragment on UserModel {
+  uid
+  username
+  gender
+  birthday
+  phone
+  avatarUrl
+  email
+  role
+}
