@@ -9,7 +9,7 @@
         v-bind="props"
       >
         <v-img v-if="userStore.userAvatar" :src="userStore.userAvatar" />
-        <v-icon v-else>mdi-account-outline</v-icon>
+        <v-icon v-else icon="mdi-account-outline" />
       </v-btn>
     </template>
 
@@ -24,7 +24,7 @@
           class="w-100"
         >
           <span class="mr-2">{{ linkItem.label }}</span>
-          <v-icon v-if="linkItem.isBlank">mdi-checkbox-blank-badge-outline</v-icon>
+          <v-icon v-if="linkItem.isBlank" icon="mdi-checkbox-blank-badge-outline" />
         </v-btn>
       </v-list-item-action>
         <v-btn

@@ -6,7 +6,7 @@ export const DARK_THEME = "dark";
 export const dark: ThemeDefinition = {
   dark: true,
   colors: {
-    background: "#121212",
+    background: "#000",
     surface: "#1ed760",
     primary: "#121212",
     accent: "#1ed760",

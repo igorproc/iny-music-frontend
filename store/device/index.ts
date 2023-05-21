@@ -14,7 +14,7 @@ export const useDeviceStore = defineStore('device-store', {
   },
   actions: {
     async initilizateClientId(): Promise<void> {
-      const userClientId = useCookie<string>('client_id', { default: () => '', watch: 'shallow' })
+      const userClientId = useCookie<string>('client_id', { default: () => '', watch: 'shallow', maxAge: 604800 * 1000 })
       if(userClientId.value) {
         this.clientId = userClientId.value
         return

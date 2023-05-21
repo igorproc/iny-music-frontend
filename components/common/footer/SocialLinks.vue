@@ -9,7 +9,7 @@
       color="primary"
       class="mr-5"
     >
-      <v-icon>{{ link.icon }}</v-icon>
+      <v-icon :icon="link.icon" />
     </v-btn>
   </div>
 </template>

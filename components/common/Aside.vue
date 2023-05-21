@@ -2,36 +2,26 @@
   <div class="d-none d-md-block h-100 the-aside__resize-bar resize-bar" @drag="onDrag" />
   <v-container
     :style="{ width: asideWidth }"
-    class="d-flex justify-end the-aside h-100 mr-5"
+    class="d-flex justify-end the-aside h-100"
   >
-    <div class="d-flex flex-column w-100 the-aside__containe">
-      <CommonLogo class="container__logo" />
+    <div class="d-flex flex-column w-100 the-aside__container">
+      <CommonAsideMainTile class="mb-2" />
+      <CommonAsideMediaTile />
     </div>
   </v-container>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue"
-import CommonLogo from "~/components/common/Logo.vue"
 
 let asideWidth = ref<string>("300px")
 const minAsideWidth: number = 100
 const maxAsideWith: number = 600
 
 const onDrag = (event: DragEvent): void => {
-  const dragWidth: number = event.clientX
-  if(!dragWidth) return
-
-  if(dragWidth <= minAsideWidth) {
-    asideWidth.value = minAsideWidth + 'px'
-    return
-  }
-
-  if(dragWidth >= maxAsideWith) {
-    asideWidth.value = maxAsideWith + 'px'
-    return
-  }
-
+  const dragWidth: number = event.clientX  
+  if(dragWidth < minAsideWidth || dragWidth > maxAsideWith) return
+  
   asideWidth.value = event.clientX + 'px'
 } 
 </script>
@@ -41,11 +31,10 @@ const onDrag = (event: DragEvent): void => {
   &__resize-bar {
     right: 0;
     position: absolute;
-    width: 3px;
+    width: 4px;
     cursor: e-resize;
     &:hover, &:focus {
-      background-color: #4d4d4d;
-      border: 1px solid #4d4d4d;
+      border-right: 1px solid #4d4d4d;
     }
   }
   .container__logo {

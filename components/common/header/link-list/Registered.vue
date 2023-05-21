@@ -5,14 +5,14 @@
         {{ $t('header.unregistered.links.donate') }}
       </v-btn>
       <v-btn icon color="primary" aria-label="friends" class="mr-2">
-        <v-icon>mdi-account-group-outline</v-icon>
+        <v-icon icon="mdi-account-group-outline" />
       </v-btn>
-      <CommonHeaderAccountMenu/>
+      <HeaderAccountMenu />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import CommonHeaderAccountMenu from '~/components/common/header/account/menu.vue'
+import HeaderAccountMenu from '~/components/common/header/account/menu.vue'
 
 </script>

@@ -14,15 +14,13 @@
 
 <script setup lang="ts">
 import { TLinkItem } from "@/types/linkList"
-import { PropType } from "vue"
 
-const props = defineProps({
-  group: {
-    type: Object as PropType<TLinkItem[]>,
-    reqired: true
-  },
-  title: String
-})
+interface IProps {
+  group: TLinkItem[]
+  title: string
+}
+
+const props = defineProps<IProps>()
 </script>
 
 <style lang="scss">

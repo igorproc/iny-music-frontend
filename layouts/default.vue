@@ -1,19 +1,21 @@
 <template>
   <v-app class="default">
-    <v-layout class="default__main d-flex">
+    <v-layout class="default__main d-flex" full-height>
       <aside class="main-aside">
         <CommonAside />
       </aside>
       <v-container class="main-content">
-        <header class="main-content__header">
-          <CommonHeader />
-        </header>
-        <v-main class="main-content__content h-100">
-          <slot />
-        </v-main>
-        <footer class="main-content__footer">
-          <CommonFooter />
-        </footer>
+        <div class="main-content__wrapper h-100">
+          <header class="main-content__header">
+            <CommonHeader />
+          </header>
+          <v-main class="main-content__content">
+            <slot />
+          </v-main>
+          <footer class="main-content__footer">
+            <CommonFooter />
+          </footer>
+        </div>
       </v-container>
     </v-layout>
     <div class="default__player-placeholder w-100">
@@ -35,8 +37,11 @@ import PlayerPlaceholder from '~/components/player/Placeholder.vue';
     .main-aside {
       position: relative;
     }
-    .main-content__footer {
-      margin-top: 50px;
+    .main-content {
+      .main-content__wrapper {
+        background-color: rgb(var(--v-theme-primary));
+        border-radius: 10px;
+      }
     }
   }
   .default__player-placeholder {
