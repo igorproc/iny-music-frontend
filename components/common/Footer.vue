@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <v-container fluid class="footer">
     <v-row class="footer__links">
       <v-col
         v-for="group in linksList"
@@ -17,7 +17,7 @@
     <div class="footer__copyright">
       <CommonFooterCopyright />
     </div>
-  </div>
+  </v-container>
 </template>
 
 <script setup lang="ts">

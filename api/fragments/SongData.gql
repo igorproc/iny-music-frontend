@@ -1,18 +1,20 @@
-fragment SongDataFragment on Song {
-  artist {
-    id
-    name
-    surname
-    altName
+fragment SongDataFragment on AlbumData {
+  songs {
+    artist {
+      id
+      altName
+      artistImage
+      shareToken
+    }
+    genres
+    feats {
+      name
+      position
+    }
+    title
+    subtitle
+    explicit
+    duration
+    songUrl
   }
-  genres
-  feats {
-    name
-    position
-  }
-  title
-  subtitle
-  explicit
-  duration
-  songUrl
 }

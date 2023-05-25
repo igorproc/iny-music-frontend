@@ -47,10 +47,10 @@ type GenreModel {
 }
 
 type ArtistOutputforSong {
-  id: ID
-  name: String
-  surname: String
-  altName: String
+  id: ID!
+  altName: String!
+  artistImage: String!
+  shareToken: String!
 }
 
 type FeatOutputforSong {
@@ -58,36 +58,37 @@ type FeatOutputforSong {
   position: Int
 }
 
-type Song {
-  artist: ArtistOutputforSong
-  genres: [String!]
-  feats: [FeatOutputforSong!]
-  title: String
+type SongDataFragment {
+  artist: ArtistOutputforSong!
+  genres: [String!]!
+  feats: [FeatOutputforSong!]!
+  title: String!
   subtitle: String
-  explicit: Boolean
-  duration: Int
+  explicit: Boolean!
+  duration: Int!
   songUrl: String
 }
 
-"""sucsess operation status"""
-type status {
-  """code"""
-  code: Int
-  message: String
+type AlbumData {
+  typename: String!
+  artist: ArtistOutputforSong
+  title: String
+  subtitle: String
+  shareToken: String
+  albumLogo: String
+  songs: [SongDataFragment!]!
+  createdAt: Int
 }
 
 type Query {
   """Find User By uid"""
   getUserByUid(id: Int!): UserModel!
 
-  """return artist data by artistId"""
-  getAtristById(atristId: Int!): ArtistModel!
-
   """Get All Genres List"""
   getAllGenreList: [GenreModel!]
 
-  """get song by sid"""
-  getSongById(id: Int!): Song!
+  """get album data"""
+  getAlbumByShareToken(shareToken: String!): AlbumData!
 }
 
 type Mutation {
@@ -101,10 +102,13 @@ type Mutation {
   createUserDevice(deviceData: NewDeviceInput!): String
 
   """create an artist"""
-  createArtist(artistInput: CreateArtistInput!, artistImage: Upload): ArtistModel!
+  createArtist(artistInput: CreateArtistInput!): ArtistModel!
 
-  """create song"""
-  createSong(songData: CreateSongInput!, songFile: Upload!): status
+  """add new album (only artist)"""
+  createNewAlbum(albumData: NewAlbumModel!): String
+
+  """upload song with album connect"""
+  uploadSong(playlistContentData: NewPlaylistContentData!): Int!
 }
 
 """input for input user data"""
@@ -136,21 +140,35 @@ input CreateArtistInput {
   name: String!
   surname: String!
   altName: String
+  avatarFile: Upload
 }
 
 """The `Upload` scalar type represents a file upload."""
 scalar Upload
 
-input CreateSongInput {
+input NewAlbumModel {
+  uid: Int!
   aid: Int!
-  featsNames: [String!]
+  title: String!
+  subtitle: String
+  albumImage: Upload!
+  featIds: [Int!]
+  plalistContentIds: [Int!]!
+}
+
+input NewPlaylistContentData {
+  uid: Int!
+  song: NewSongFragment!
+}
+
+input NewSongFragment {
+  aid: Int!
+  featsIds: [Int!]
   genresIds: [Int!]!
   ownerUid: Int!
   title: String!
-  subtitle: String!
+  subtitle: String
   explicit: Boolean!
   duration: Int!
-  song: Upload
-  largeImg: Upload
-  smallImg: Upload
+  songFile: Upload
 }

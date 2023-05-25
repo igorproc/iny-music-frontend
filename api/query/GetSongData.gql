@@ -1,5 +1,0 @@
-query getSongDataQuery($id: Int!) {
-  getSongById(id: $id) {
-    ...SongDataFragment
-  }
-}

@@ -55,6 +55,13 @@
       }
     }
   },
+  "playlist": {
+    "header": {
+      "info": {
+        "songs": "{count} tacks"
+      }
+    }
+  },
   "footer": {
     "company": {
       "title": "Company",

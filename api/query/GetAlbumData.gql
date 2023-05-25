@@ -1,0 +1,17 @@
+query getAlbumDataQuery($shareToken: String!) {
+  getAlbumByShareToken(shareToken: $shareToken) {
+    typename
+    artist {
+      id
+      altName
+      artistImage
+      shareToken
+    }
+    title
+    subtitle
+    shareToken
+    albumLogo
+    ...SongDataFragment
+    createdAt
+  }
+}
