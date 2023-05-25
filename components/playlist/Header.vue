@@ -87,6 +87,9 @@ const songsCount = computed<string>(() => {
     .content__info {
       font-size: 18px;
       gap: 5px;
+      .info__artist-name {
+        color: #fff;
+      }
       .info__artist-image {
         width: 24px;
         height: 24px;
