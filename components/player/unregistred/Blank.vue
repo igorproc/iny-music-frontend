@@ -5,13 +5,7 @@
       <span class="content__subtitle">{{ $t('player.unregistered_bar.subtitle') }}</span>
     </div>
     <div class="unregistred-blank__actions">
-      <v-btn
-        rounded
-        size="large"
-        :ripple="false"
-        color="#fff"
-        :to="localePath({ name: 'sign-up' })"
-      >
+      <v-btn rounded size="large" :ripple="false" color="#fff" :to="localePath({ name: 'sign-up' })">
         <span class="actions__label">{{ $t('player.unregistered_bar.actions.sign_up.label') }}</span>
       </v-btn>
     </div>
@@ -19,11 +13,12 @@
 </template>
 
 <script setup lang="ts">
+const localePath = useLocalePath()
 </script>
 
 <style lang="scss">
 .unregistred-blank {
-  background-image: linear-gradient(90deg,#af2896,#509bf5);
+  background-image: linear-gradient(90deg, #af2896, #509bf5);
   color: #fff;
   .unregistred-blank__content {
     .content__subtitle {

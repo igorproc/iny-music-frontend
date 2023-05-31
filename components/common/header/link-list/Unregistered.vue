@@ -14,31 +14,14 @@
         </nuxt-link>
       </v-btn>
     </div>
-    <v-divider
-      :thickness="1"
-      vertical
-      inset
-      color="#fff"
-      class="link-list__content-divider border-opacity-100"
-    />
+    <v-divider :thickness="1" vertical inset color="#fff" class="link-list__content-divider border-opacity-100" />
     <div class="link-list__actions">
-      <v-btn
-        size="large"
-        variant="text"
-        :ripple="false"
-        class="link-list__actions-item item"
-      >
-      <nuxt-link :to="localePath({ name: 'sign-up' })" class="text-decoration-none item__content">
+      <v-btn size="large" variant="text" :ripple="false" class="link-list__actions-item item">
+        <nuxt-link :to="localePath({ name: 'sign-up' })" class="text-decoration-none item__content">
           {{ $t('header.unregistered.actions.sign_up') }}
         </nuxt-link>
       </v-btn>
-      <v-btn
-        size="large"
-        rounded
-        flat
-        color="#fff"
-        class="link-list__actions-item --button item"
-      >
+      <v-btn size="large" rounded flat color="#fff" class="link-list__actions-item --button item">
         <nuxt-link to="/sign-in" class="text-decoration-none item__content">
           {{ $t('header.unregistered.actions.sign_in') }}
         </nuxt-link>
@@ -48,30 +31,33 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue"
-import { TLinkItem } from "~/types/linkList"
-import { useI18n } from "vue-i18n"
+import { ref } from 'vue'
+import { TLinkItem } from '~/types/linkList'
+import { useI18n } from 'vue-i18n'
 
+const localePath = useLocalePath()
 const { t } = useI18n()
 
 const itemList = ref<TLinkItem[]>([
   {
     id: 0,
     label: t('header.unregistered.links.support'),
-    url: "/us"
+    url: '/us',
   },
   {
     id: 1,
     label: t('header.unregistered.links.donate'),
-    url: "/donate"
+    url: '/donate',
   },
 ])
 </script>
 
 <style lang="scss">
 .app-header-unregistered-link-list {
-  .link-list__content, .link-list__actions {
-    .link-list__content-item, .link-list__actions-item {
+  .link-list__content,
+  .link-list__actions {
+    .link-list__content-item,
+    .link-list__actions-item {
       .v-btn__overlay {
         display: none;
       }

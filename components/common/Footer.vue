@@ -1,11 +1,7 @@
 <template>
   <v-container fluid class="footer">
     <v-row class="footer__links">
-      <v-col
-        v-for="group in linksList"
-        :key="group.id"
-        cols="3"
-      >
+      <v-col v-for="group in linksList" :key="group.id" cols="3">
         <CommonFooterLinksGroup :group="group.links" :title="group.title" />
       </v-col>
       <v-spacer />
@@ -21,9 +17,9 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from "vue-i18n"
-import { TFooterLinkList } from "~/types/linkList"
-import CommonFooterCopyright from "~/components/common/footer/Copyright.vue"
+import { useI18n } from 'vue-i18n'
+import { TFooterLinkList } from '~/types/linkList'
+import CommonFooterCopyright from '~/components/common/footer/Copyright.vue'
 
 const { t } = useI18n()
 const linksList: TFooterLinkList[] = [
@@ -34,19 +30,19 @@ const linksList: TFooterLinkList[] = [
       {
         id: 0,
         label: t('footer.company.links.about'),
-        url: '/'
+        url: '/',
       },
       {
         id: 1,
         label: t('footer.company.links.jobs'),
-        url: '/'
+        url: '/',
       },
       {
         id: 2,
         label: t('footer.company.links.for_record'),
-        url: '/'
-      }
-    ]
+        url: '/',
+      },
+    ],
   },
   {
     id: 1,
@@ -55,19 +51,19 @@ const linksList: TFooterLinkList[] = [
       {
         id: 0,
         label: t('footer.communities.links.artist'),
-        url: '/'
+        url: '/',
       },
       {
         id: 1,
         label: t('footer.communities.links.developers'),
-        url: '/'
+        url: '/',
       },
       {
         id: 2,
         label: t('footer.communities.links.vendors'),
-        url: '/'
-      }
-    ]
+        url: '/',
+      },
+    ],
   },
   {
     id: 2,
@@ -76,15 +72,15 @@ const linksList: TFooterLinkList[] = [
       {
         id: 0,
         label: t('footer.usefull_links.links.support'),
-        url: '/'
+        url: '/',
       },
       {
         id: 1,
         label: t('footer.usefull_links.links.mobile_app'),
-        url: '/'
-      }
-    ]
-  }
+        url: '/',
+      },
+    ],
+  },
 ]
 </script>
 

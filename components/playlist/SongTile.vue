@@ -1,15 +1,23 @@
 <template>
   <v-row class="playlist-song-tile py-2">
     <v-col cols="9" class="tile__content h-100 d-flex align-center">
-      <v-btn size="small" icon variant="text" :ripple="false" class="tile__content-changed">
+      <v-btn size="small" icon variant="text" :ripple="false" class="tile__content-changed" @click="playSong">
         <span class="content__position">{{ position }}</span>
         <v-icon icon="mdi-play" size="20" class="content__play-action" />
       </v-btn>
       <div class="tile__content-wrap d-flex flex-column">
         <span class="content__title">{{ song.title }}</span>
         <div class="content__artist">
-          <v-icon size="20" v-if="song.explicit" color="#a7a7a7" icon="mdi-alpha-e-box-outline" class="content__artist--is-explict mr-1" />
-          <nuxt-link :to="localePath({ name: 'index' })" class="content__artist-name">{{ song.artist.altName }}</nuxt-link>
+          <v-icon
+            v-if="song.explicit"
+            size="20"
+            color="#a7a7a7"
+            icon="mdi-alpha-e-box-outline"
+            class="content__artist--is-explict mr-1"
+          />
+          <nuxt-link :to="localePath({ name: 'index' })" class="content__artist-name">{{
+            song.artist.altName
+          }}</nuxt-link>
         </div>
       </div>
     </v-col>
@@ -23,16 +31,23 @@
 </template>
 
 <script setup lang="ts">
-import { TGqlResult } from '~/types/gql';
+import { useSongStore } from '~/store/song'
+import { TSong } from '~/types/player'
 
 interface IPlaylistSongTileProps {
-  song: TGqlResult<'getAlbumDataQuery'>['getAlbumByShareToken']['songs'][0]
+  song: TSong
   position: number
 }
 
+const localePath = useLocalePath()
 const props = defineProps<IPlaylistSongTileProps>()
+const { song, position } = toRefs(props)
+const songStore = useSongStore()
 
 const prettySongTime = computed<string>(() => songPrettyTime(props.song.duration))
+const playSong = () => {
+  songStore.setSongQueue(song.value)
+}
 </script>
 
 <style lang="scss">
@@ -65,7 +80,7 @@ const prettySongTime = computed<string>(() => songPrettyTime(props.song.duration
     }
   }
   &:hover {
-    background-color: hsla(0,0%,100%,.3) !important;
+    background-color: hsla(0, 0%, 100%, 0.3) !important;
     border-radius: 5px;
     .tile__content {
       .tile__content-changed {

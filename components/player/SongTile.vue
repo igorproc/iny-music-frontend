@@ -1,12 +1,30 @@
 <template>
   <div v-if="song" class="player-song-tile d-flex align-center">
-    <v-img class="player-song-tile__image" />
+    <v-img :src="song.artist.artistImage" max-width="56" class="player-song-tile__image mr-2">
+      <template #placeholder>
+        <div class="d-flex align-center justify-center fill-height">
+          <v-progress-circular color="grey-lighten-4" indeterminate></v-progress-circular>
+        </div>
+      </template>
+    </v-img>
     <div class="player-song-tile__information d-flex flex-column">
       <div class="information__title">
         <span>{{ song.title }}</span>
       </div>
-      <div class="information__arists">
-        <span>{{ getAuthorTtile }}</span>
+      <div class="information__artists artists d-flex align-center">
+        <nuxt-link :to="localePath({ name: 'index' })" class="artists__artist mr-1">
+          <span>{{ getAuthorTtile }}</span>
+        </nuxt-link>
+        <div v-if="song.feats.length">
+          <nuxt-link
+            v-for="artist in song.feats"
+            :key="Number(artist.position)"
+            :to="localePath({ name: 'index' })"
+            class="artists__artist mr-1"
+          >
+            <span>{{ artist.name }}</span>
+          </nuxt-link>
+        </div>
       </div>
     </div>
   </div>
@@ -14,19 +32,37 @@
 
 <script setup lang="ts">
 import { defineProps } from 'vue'
-import { TGqlResult } from '~/types/gql';
+import { TGqlResult } from '~/types/gql'
 
+const localePath = useLocalePath()
 const props = defineProps({
   song: {
-    type: Object as PropType<TGqlResult<'getSongDataQuery'>['getSongById']>,
-    default: null
+    type: Object as PropType<TGqlResult<'getAlbumDataQuery'>['getAlbumByShareToken']['songs'][0]>,
+    default: null,
   },
 })
 const getAuthorTtile = computed<string>(() => {
-  const authorName = props.song.artist?.altName ? props.song.artist.altName : `${props.song.artist?.name} ${props.song.artist?.surname}`
-  if(Array.isArray(props.song.feats) && props.song.feats.length) {
-    return `${authorName},`
+  if (Array.isArray(props.song.feats) && props.song.feats.length) {
+    return `${props.song.artist.altName}`
   }
-  return authorName
+  return props.song.artist.altName
 })
 </script>
+
+<style lang="scss">
+.player-song-tile {
+  .player-song-tile__information {
+    .information__artists {
+      .artists__artist {
+        text-decoration: none;
+        font-size: 14px;
+        color: #b3b3b3;
+        &:hover {
+          color: #fff;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+</style>

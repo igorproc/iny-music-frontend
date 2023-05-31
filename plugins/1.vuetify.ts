@@ -2,7 +2,7 @@ import { defineNuxtPlugin } from 'nuxt/app'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
-import { DARK_THEME, dark } from '~/utils/themes';
+import { DARK_THEME, dark } from '~/utils/themes'
 
 export default defineNuxtPlugin((app) => {
   const vuetify = createVuetify({
@@ -13,9 +13,9 @@ export default defineNuxtPlugin((app) => {
     theme: {
       defaultTheme: DARK_THEME,
       themes: {
-        dark
+        dark,
       },
     },
-  });
-  app.vueApp.use(vuetify);
-});
+  })
+  app.vueApp.use(vuetify)
+})

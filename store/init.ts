@@ -1,6 +1,6 @@
 import type { NuxtApp } from '#app'
-import { usePinia } from "#imports"
-import { useIndexStore } from './index'
+import { usePinia } from '#imports'
+import { useIndexStore } from '~/store/index'
 import { useClientOnly } from '~/composables/useClientOnly'
 
 export default async function (nuxtApp: NuxtApp) {

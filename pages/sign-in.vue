@@ -6,13 +6,14 @@
 </template>
 
 <script setup lang="ts">
-import { definePageMeta } from "#imports"
-import UserLoginInformation from "~/components/user/LoginInformation.vue"
-import UserSignInForm from "~/components/user/sign-in/SignInForm.vue"
+import { definePageMeta } from '#imports'
+import UserLoginInformation from '~/components/user/LoginInformation.vue'
+import UserSignInForm from '~/components/user/sign-in/SignInForm.vue'
 
 definePageMeta({
   layout: 'login',
 })
+const localePath = useLocalePath()
 </script>
 
 <style lang="scss">

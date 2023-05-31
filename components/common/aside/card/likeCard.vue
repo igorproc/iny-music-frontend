@@ -4,15 +4,14 @@
       <v-img src="http://cdn/static/liked-songs.png" max-width="48" class="card__image">
         <template #placeholder>
           <div class="d-flex align-center justify-center fill-height">
-            <v-progress-circular
-              color="grey-lighten-4"
-              indeterminate
-            ></v-progress-circular>
+            <v-progress-circular color="grey-lighten-4" indeterminate></v-progress-circular>
           </div>
         </template>
       </v-img>
       <div class="card__content d-flex flex-column">
-        <v-card-title class="card__content-title py-0 pl-3" :class="{ '-active': isPlaying }">Любимые треки</v-card-title>
+        <v-card-title class="card__content-title py-0 pl-3" :class="{ '-active': isPlaying }"
+          >Любимые треки</v-card-title
+        >
         <v-card-subtitle class="card__content-info d-flex pl-3">
           <span class="info__type mr-2">Плейлист</span>
           <span class="info__tracks-count">225 треков</span>
@@ -27,7 +26,9 @@
 interface IProps {
   isPlaying: boolean
 }
+const localePath = useLocalePath()
 const props = defineProps<IProps>()
+const { isPlaying } = toRefs(props)
 </script>
 
 <style lang="scss">
@@ -49,7 +50,7 @@ const props = defineProps<IProps>()
     }
   }
   &:hover {
-    background-color: hsla(0,0%,100%,.3) !important;
+    background-color: hsla(0, 0%, 100%, 0.3) !important;
   }
 }
 </style>

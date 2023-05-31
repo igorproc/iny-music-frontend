@@ -5,14 +5,13 @@
       <span class="tile__content">Home</span>
     </v-btn>
     <v-btn size="large" variant="text" class="tile__action px-0 align-center justify-start">
-      <v-icon size="22" icon="mdi-magnify" class ="tile__icon mr-2" />
+      <v-icon size="22" icon="mdi-magnify" class="tile__icon mr-2" />
       <span class="tile__content">Search</span>
     </v-btn>
   </div>
 </template>
 
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <style lang="scss">
 .aside-main-tile {

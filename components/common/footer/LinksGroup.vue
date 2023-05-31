@@ -13,13 +13,14 @@
 </template>
 
 <script setup lang="ts">
-import { TLinkItem } from "@/types/linkList"
+import { TLinkItem } from '@/types/linkList'
 
 interface IProps {
   group: TLinkItem[]
   title: string
 }
 
+const localePath = useLocalePath()
 const props = defineProps<IProps>()
 </script>
 

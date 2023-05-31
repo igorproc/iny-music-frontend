@@ -6,6 +6,6 @@
 </template>
 
 <script setup lang="ts">
-import HeaderLinkList from "~/components/common/header/LinkList.vue"
-import HeaderHistoryActions from "~/components/common/header/HistoryActions.vue"
+import HeaderLinkList from '~/components/common/header/LinkList.vue'
+import HeaderHistoryActions from '~/components/common/header/HistoryActions.vue'
 </script>

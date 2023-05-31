@@ -1,8 +1,8 @@
-import { defineStore } from "pinia"
-import { TGqlResult } from "~/types/gql"
+import { defineStore } from 'pinia'
+import { TGqlResult } from '~/types/gql'
 
 type TUserStoreState = {
-  isAuth: boolean,
+  isAuth: boolean
   user: TGqlResult<'createAccountMutation'>['createUser'] | null
 }
 
@@ -13,6 +13,6 @@ export const useUserStore = defineStore('user-store', {
   }),
   getters: {
     userIsAuth: (state) => state.isAuth,
-    userAvatar: (state) => state.user?.avatarUrl
-  }
+    userAvatar: (state) => state.user?.avatarUrl,
+  },
 })

@@ -1,4 +1,4 @@
-export function songPrettyTime (time: number = 0): string {
+export function songPrettyTime(time = 0): string {
   /**
    * @todo add hours
    */

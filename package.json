@@ -6,11 +6,22 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint --fix --ext .ts,.js,.vue ."
   },
   "devDependencies": {
+    "@nuxtjs/eslint-module": "^4.0.2",
     "@types/node": "^18.16.2",
-    "nuxt": "^3.4.2"
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "@vue/eslint-config-standard": "^8.0.1",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-no-relative-import-paths": "^1.5.2",
+    "eslint-plugin-nuxt": "^4.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.6.0",
+    "nuxt": "^3.5.1"
   },
   "dependencies": {
     "@mdi/font": "^7.2.96",
@@ -19,10 +30,12 @@
     "@nuxt/typescript-build": "^3.0.1",
     "@nuxtjs/i18n": "^8.0.0-beta.11",
     "@pinia/nuxt": "^0.4.9",
+    "consola": "^3.1.0",
     "graphql-client": "^2.0.1",
     "nuxt-font-loader": "^2.3.1",
     "nuxt-graphql-client": "^0.2.27",
     "pinia": "^2.0.35",
+    "sass": "^1.62.1",
     "scss": "^0.2.4",
     "typecheck": "^0.1.2",
     "vite-plugin-vuetify": "^1.0.2",

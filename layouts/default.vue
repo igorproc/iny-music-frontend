@@ -28,7 +28,7 @@
 import CommonAside from '~/components/common/Aside.vue'
 import CommonHeader from '~/components/common/Header.vue'
 import CommonFooter from '~/components/common/Footer.vue'
-import PlayerPlaceholder from '~/components/player/Placeholder.vue';
+import PlayerPlaceholder from '~/components/player/Placeholder.vue'
 </script>
 
 <style lang="scss">

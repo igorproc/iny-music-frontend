@@ -5,7 +5,7 @@ export type TLinkItem = {
 }
 
 export type TFooterLinkList = {
-  id: number,
-  title: string,
+  id: number
+  title: string
   links: TLinkItem[]
 }

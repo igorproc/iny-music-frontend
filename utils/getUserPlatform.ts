@@ -15,14 +15,14 @@ function useInyDeviceTest() {
 export function getUserPlatform(): string {
   const userAgent: string = window.navigator.userAgent
   const allowedPlatforms = useInyDeviceTest()
-  let userPlatform: string = ''
+  let userPlatform = ''
 
   allowedPlatforms.forEach((allowedPlatform) => {
-    if(userAgent.match(allowedPlatform.platform)) {
+    if (userAgent.match(allowedPlatform.platform)) {
       userPlatform = allowedPlatform.device
     }
   })
 
-  if(!userPlatform) throw new Error('такого девайса не существует')
-  return userPlatform 
+  if (!userPlatform) throw new Error('такого девайса не существует')
+  return userPlatform
 }

@@ -1,19 +1,15 @@
-import { defineStore } from "pinia"
-import { useDeviceStore } from "./device"
-import { initilizateUser } from "./user/init"
+import { defineStore } from 'pinia'
+import { useDeviceStore } from '~/store/device'
+import { initilizateUser } from '~/store/user/init'
 
 export const useIndexStore = defineStore('index-store', {
   actions: {
     async appInit(): Promise<void> {
-      console.log('app-init')
-      
+      return
     },
     async clientInit(): Promise<void> {
       const deviceStore = useDeviceStore()
-      Promise.all([
-        deviceStore.initilizateClientId(),
-        initilizateUser()
-      ])
-    }
-  }
+      Promise.all([deviceStore.initilizateClientId(), initilizateUser()])
+    },
+  },
 })

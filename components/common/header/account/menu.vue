@@ -1,14 +1,7 @@
 <template>
   <v-menu content-class="profile-menu__main">
-    <template v-slot:activator="{ props }">
-      <v-btn
-        icon
-        color="primary"
-        aria-label="account"
-        size="large"
-        v-bind="props"
-        :ripple="false"
-      >
+    <template #activator="{ props }">
+      <v-btn icon color="primary" aria-label="account" size="large" v-bind="props" :ripple="false">
         <v-img v-if="userStore.userAvatar" :src="userStore.userAvatar" />
         <v-icon v-else icon="mdi-account-outline" />
       </v-btn>
@@ -21,7 +14,7 @@
           elevation="0"
           color="#282828"
           :to="linkItem.link"
-          :target="{ '_blank': linkItem.isBlank }"
+          :target="{ _blank: linkItem.isBlank }"
           class="list__item-action action w-100"
         >
           <span class="action__label mr-2">{{ linkItem.label }}</span>
@@ -44,8 +37,8 @@
 </template>
 
 <script setup lang="ts">
-import { useUserStore } from '~/store/user';
-import { logoutFromAccount } from '~/store/user/auth';
+import { useUserStore } from '~/store/user'
+import { logoutFromAccount } from '~/store/user/auth'
 type THeaderLinkList = {
   id: number
   label: string
@@ -57,27 +50,27 @@ const userStore = useUserStore()
 const linkList: THeaderLinkList[] = [
   {
     id: 0,
-    label: "account",
-    link: "/",
-    isBlank: true
+    label: 'account',
+    link: '/',
+    isBlank: true,
   },
   {
     id: 1,
-    label: "profile",
-    link: "/",
-    isBlank: true
+    label: 'profile',
+    link: '/',
+    isBlank: true,
   },
   {
     id: 2,
-    label: "support",
-    link: "/",
-    isBlank: true
+    label: 'support',
+    link: '/',
+    isBlank: true,
   },
   {
     id: 3,
-    label: "settings",
-    link: "/",
-    isBlank: false
+    label: 'settings',
+    link: '/',
+    isBlank: false,
   },
 ]
 </script>
@@ -89,7 +82,8 @@ const linkList: THeaderLinkList[] = [
   }
   .profile-menu__list {
     .list__item {
-      .list__item-action, .action__label {
+      .list__item-action,
+      .action__label {
         color: #fff;
       }
     }

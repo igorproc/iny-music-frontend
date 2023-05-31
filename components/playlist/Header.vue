@@ -3,10 +3,7 @@
     <v-img :src="playlist.albumLogo" max-width="232" class="header__image">
       <template #placeholder>
         <div class="d-flex align-center justify-center fill-height">
-          <v-progress-circular
-            color="grey-lighten-4"
-            indeterminate
-          />
+          <v-progress-circular color="grey-lighten-4" indeterminate />
         </div>
       </template>
     </v-img>
@@ -14,18 +11,15 @@
       <span class="content__playlist-type">{{ playlistType }}</span>
       <span class="content__title">{{ playlist.title }}</span>
       <div class="content__info d-flex">
-        <nuxt-link
-          :to="localePath({ name: 'index' })"
-          class="info__artist text-decoration-none d-flex"
-        >
+        <nuxt-link :to="localePath({ name: 'index' })" class="info__artist text-decoration-none d-flex">
           <v-img :src="playlist.artist?.artistImage" max-width="24" class="info__artist-image mr-2" />
           <span class="info__artist-name">{{ playlist.artist?.altName }}</span>
-        </nuxt-link >
-        <v-divider vertical color="#a7a7a7"/>
+        </nuxt-link>
+        <v-divider vertical color="#a7a7a7" />
         <span class="info__release-date">{{ getReleaseYear }}</span>
-        <v-divider vertical color="#a7a7a7"/>
+        <v-divider vertical color="#a7a7a7" />
         <span class="info__tracks-count">{{ songsCount }}</span>
-        <v-divider vertical color="#a7a7a7"/>
+        <v-divider vertical color="#a7a7a7" />
         <span class="info__tracks-length">{{ tracksLength }}</span>
       </div>
     </div>
@@ -33,11 +27,13 @@
 </template>
 
 <script setup lang="ts">
-import { TGqlResult } from '~/types/gql';
+import { TGqlResult } from '~/types/gql'
 
 interface IProps {
   playlist: TGqlResult<'getAlbumDataQuery'>['getAlbumByShareToken']
 }
+
+const localePath = useLocalePath()
 const { t } = useI18n()
 const props = defineProps<IProps>()
 
@@ -53,7 +49,7 @@ const playlistType = computed<string>(() => {
 })
 
 const getReleaseYear = computed<number>(() => {
-  if(props.playlist.createdAt) {
+  if (props.playlist.createdAt) {
     return new Date(props.playlist.createdAt * 1000).getFullYear()
   }
   return 0

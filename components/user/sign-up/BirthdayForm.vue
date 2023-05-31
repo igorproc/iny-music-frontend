@@ -2,12 +2,12 @@
   <v-row class="d-flex user-birthday-form" no-gutters>
     <v-col cols="4">
       <v-text-field
+        v-model="inputDate.day"
         rounded="0"
         variant="outlined"
         :label="$t('user.sign_up.input.birthday.day.label')"
         color="success"
         type="number"
-        v-model="inputDate.day"
       />
     </v-col>
     <v-col cols="4">
@@ -22,26 +22,26 @@
     </v-col>
     <v-col cols="4">
       <v-text-field
+        v-model="inputDate.year"
         rounded="0"
         variant="outlined"
         :label="$t('user.sign_up.input.birthday.year.label')"
         color="success"
         type="number"
-        v-model="inputDate.year"
       />
     </v-col>
   </v-row>
 </template>
 
 <script setup lang="ts">
-import { ref, watch, defineEmits } from "vue"
+import { ref, watch, defineEmits } from 'vue'
 
 interface IinputDate {
-  day: string,
+  day: string
   mounth: {
-    id: number,
+    id: number
     label: string
-  },
+  }
   year: string
 }
 
@@ -51,60 +51,65 @@ const emit = defineEmits<{
 const mounths = ref<any>([
   {
     id: 1,
-    label: 'январь'
+    label: 'январь',
   },
   {
     id: 2,
-    label: 'февраль'
+    label: 'февраль',
   },
   {
     id: 3,
-    label: 'март'
+    label: 'март',
   },
   {
     id: 4,
-    label: 'апрель'
+    label: 'апрель',
   },
   {
     id: 5,
-    label: 'май'
+    label: 'май',
   },
   {
     id: 6,
-    label: 'июнь'
+    label: 'июнь',
   },
   {
     id: 7,
-    label: 'июль'
+    label: 'июль',
   },
   {
     id: 8,
-    label: 'август'
+    label: 'август',
   },
   {
     id: 9,
-    label: 'сентябрь'
+    label: 'сентябрь',
   },
   {
     id: 10,
-    label: 'октябрь'
+    label: 'октябрь',
   },
   {
     id: 11,
-    label: 'ноябрь'
+    label: 'ноябрь',
   },
   {
     id: 12,
-    label: 'декабрь'
+    label: 'декабрь',
   },
 ])
 const inputDate = ref<IinputDate>({
   day: '',
   mounth: mounths.value[0],
-  year: ''
+  year: '',
 })
-watch(() => inputDate, (newDate) => {
-  const timeStamp: number = Date.parse(`${newDate.value.day}-${newDate.value.mounth.id}-${newDate.value.year} 00:00:00 GMT`) / 1000
-  emit('update-birthday', timeStamp)
-}, { deep: true })
+watch(
+  () => inputDate,
+  (newDate) => {
+    const timeStamp: number =
+      Date.parse(`${newDate.value.day}-${newDate.value.mounth.id}-${newDate.value.year} 00:00:00 GMT`) / 1000
+    emit('update-birthday', timeStamp)
+  },
+  { deep: true },
+)
 </script>

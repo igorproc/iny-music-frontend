@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useNuxtApp } from 'nuxt/app';
+import { useNuxtApp } from 'nuxt/app'
 import initializeApp from '~/store/init'
 
 const nuxtApp = useNuxtApp()
