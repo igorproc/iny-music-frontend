@@ -43,13 +43,16 @@ const playerInstance = reactive({
 })
 
 function createPlayer(song: TSong) {
-  if (playerInstance.__isCreated) {
-    return playerInstance
+  function applySong() {
+    playerInstance.$audio.src = song.songUrl
+    playerInstance.duration = song.duration
+    playerInstance.$audio.volume = playerInstance.getVolume()
   }
 
-  playerInstance.$audio.src = song.songUrl
-  playerInstance.duration = song.duration
-  playerInstance.$audio.volume = playerInstance.getVolume()
+  if (playerInstance.__isCreated) {
+    applySong()
+    return playerInstance
+  }
 
   playerInstance.$audio.addEventListener('timeupdate', playerInstance._onCurrentTimeUpdate)
   playerInstance.$audio.addEventListener('loadedmetadata', playerInstance._onUploadMeta)
