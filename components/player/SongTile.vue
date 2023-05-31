@@ -12,7 +12,10 @@
         <span>{{ song.title }}</span>
       </div>
       <div class="information__artists artists d-flex align-center">
-        <nuxt-link :to="localePath({ name: 'index' })" class="artists__artist mr-1">
+        <nuxt-link
+          :to="localePath({ name: 'playlist', params: { shareToken: song.artist.shareToken } })"
+          class="artists__artist mr-1"
+        >
           <span>{{ getAuthorTtile }}</span>
         </nuxt-link>
         <div v-if="song.feats.length">
@@ -31,16 +34,16 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
-import { TGqlResult } from '~/types/gql'
+import { TSong } from '~/types/player'
+
+interface IPlayerSongTileProps {
+  song: TSong
+}
 
 const localePath = useLocalePath()
-const props = defineProps({
-  song: {
-    type: Object as PropType<TGqlResult<'getAlbumDataQuery'>['getAlbumByShareToken']['songs'][0]>,
-    default: null,
-  },
-})
+const props = defineProps<IPlayerSongTileProps>()
+
+const { song } = toRefs(props)
 const getAuthorTtile = computed<string>(() => {
   if (Array.isArray(props.song.feats) && props.song.feats.length) {
     return `${props.song.artist.altName}`

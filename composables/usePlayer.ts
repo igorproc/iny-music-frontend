@@ -9,6 +9,8 @@ interface IPlayer {
   isPlaying: Ref<boolean>
   togglePlayer: () => void
   setVolume: (volume: number) => void
+  currentTime: Ref<string>
+  duration: Ref<string>
 }
 
 function initSong(song: TSong) {
@@ -18,9 +20,22 @@ function initSong(song: TSong) {
 
 export default function usePlayer(song: TSong | null = null): DeepRequiredNonNullable<IPlayer> {
   song = song ? initSong(song) : songInstance
-  // if (!song) return
+  if (!song) return
 
-  if (song?.songUrl) $player.src = song.songUrl
+  const duration = ref(0)
+  const currentTime = ref(0)
+
+  const onTimeUpdate = () => {
+    currentTime.value = $player.currentTime
+  }
+
+  const onUploadSrc = () => {
+    duration.value = $player.duration
+  }
+
+  $player.src = song.songUrl
+  $player.addEventListener('timeupdate', onTimeUpdate)
+  $player.addEventListener('loadeddata', onUploadSrc)
 
   const startPlay = () => {
     $player.play().catch(() => true)
@@ -45,5 +60,7 @@ export default function usePlayer(song: TSong | null = null): DeepRequiredNonNul
     isPlaying,
     togglePlayer,
     setVolume,
+    currentTime,
+    duration,
   }
 }

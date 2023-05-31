@@ -3,7 +3,7 @@
     <div class="player-controls__actions d-flex align-center justify-center">
       <v-btn :icon="playIcon" variant="text" @click="togglePlayer" />
     </div>
-    <div class="player-controls__timeline"></div>
+    <div class="player-controls__timeline">{{ prettyPlayingTime }} {{ prettySongDuration }}</div>
   </div>
 </template>
 
@@ -17,8 +17,10 @@ interface IPlayerControlsProps {
 
 const props = defineProps<IPlayerControlsProps>()
 const { song } = toRefs(props)
-const { isPlaying, togglePlayer } = usePlayer(song.value)
+const { isPlaying, togglePlayer, currentTime, duration } = usePlayer(song.value)
 
+const prettySongDuration = computed(() => songPrettyTime(Number(duration.value)))
+const prettyPlayingTime = computed(() => songPrettyTime(Number(currentTime.value)))
 const playIcon = computed(() => {
   if (isPlaying.value) return 'mdi-pause'
   return 'mdi-play'
