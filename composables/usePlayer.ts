@@ -1,66 +1,68 @@
-import { DeepRequiredNonNullable } from '~/types/gql'
 import { TSong } from '~/types/player'
 
-let songInstance: TSong | null = null
-const isPlaying = ref(false)
-const $player = document.createElement('audio')
+const playerInstance = reactive({
+  __isCreated: false,
+  $audio: document.createElement('audio'),
+  isPlaying: false,
+  currentTime: 0,
+  duration: 0,
+  volumeLocaleStorageName: 'player-volume',
 
-interface IPlayer {
-  isPlaying: Ref<boolean>
-  togglePlayer: () => void
-  setVolume: (volume: number) => void
-  currentTime: Ref<string>
-  duration: Ref<string>
-}
-
-function initSong(song: TSong) {
-  songInstance = song
-  return songInstance
-}
-
-export default function usePlayer(song: TSong | null = null): DeepRequiredNonNullable<IPlayer> {
-  song = song ? initSong(song) : songInstance
-  if (!song) return
-
-  const duration = ref(0)
-  const currentTime = ref(0)
-
-  const onTimeUpdate = () => {
-    currentTime.value = $player.currentTime
-  }
-
-  const onUploadSrc = () => {
-    duration.value = $player.duration
-  }
-
-  $player.src = song.songUrl
-  $player.addEventListener('timeupdate', onTimeUpdate)
-  $player.addEventListener('loadeddata', onUploadSrc)
-
-  const startPlay = () => {
-    $player.play().catch(() => true)
-    isPlaying.value = true
-  }
-  const pausePlay = () => {
-    $player.pause()
-    isPlaying.value = false
-  }
-  const togglePlayer = () => {
-    if (isPlaying.value) {
-      pausePlay()
-      return
+  // open api
+  play() {
+    if (this.__isCreated && !this.isPlaying) {
+      this.isPlaying = true
+      this.$audio.play()
     }
-    startPlay()
-  }
-  const setVolume = (volume: number) => {
-    $player.volume = volume
+  },
+  pause() {
+    if (this.__isCreated && this.isPlaying) {
+      this.isPlaying = false
+      this.$audio.pause()
+    }
+  },
+  toggle() {
+    return this.isPlaying ? this.pause() : this.play()
+  },
+
+  setVolume(volume: number) {
+    this.$audio.volume = volume
+    localStorage.setItem(this.volumeLocaleStorageName, volume + '')
+  },
+  getVolume() {
+    return Number(localStorage.getItem(this.volumeLocaleStorageName)) || 100
+  },
+
+  // closed api
+  _onUploadMeta() {
+    this.duration = this.$audio.duration
+  },
+  _onCurrentTimeUpdate() {
+    this.duration = this.$audio.duration
+  },
+})
+
+function createPlayer(song: TSong) {
+  if (playerInstance.__isCreated) {
+    return playerInstance
   }
 
-  return {
-    isPlaying,
-    togglePlayer,
-    setVolume,
-    currentTime,
-    duration,
+  playerInstance.$audio.src = song.songUrl
+  playerInstance.duration = song.duration
+  playerInstance.$audio.volume = playerInstance.getVolume()
+
+  playerInstance.$audio.addEventListener('timeupdate', playerInstance._onCurrentTimeUpdate)
+  playerInstance.$audio.addEventListener('loadedmetadata', playerInstance._onUploadMeta)
+
+  onUnmounted(() => {
+    playerInstance.$audio.removeEventListener('timeupdate', playerInstance._onCurrentTimeUpdate)
+    playerInstance.$audio.removeEventListener('loadedmetadata', playerInstance._onUploadMeta)
+  })
+}
+
+export function usePlayer(song: TSong | null) {
+  if (song) {
+    createPlayer(song)
   }
+  return playerInstance
 }
