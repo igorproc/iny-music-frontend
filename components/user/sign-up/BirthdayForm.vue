@@ -45,9 +45,7 @@ interface IinputDate {
   year: string
 }
 
-const emit = defineEmits<{
-  (e: 'update-birthday', payload: number): number
-}>()
+const emit = defineEmits<{ (e: 'update-birthday', payload: number): number }>()
 const mounths = ref<any>([
   {
     id: 1,

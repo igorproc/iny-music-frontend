@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 import MediaTileHeader from '~/components/common/aside/media/Header.vue'
-import MediaTileLikeCard from '~/components/common/aside/card/likeCard.vue'
+import MediaTileLikeCard from '~/components/common/aside/card/LikeCard.vue'
 </script>
 
 <style lang="scss">

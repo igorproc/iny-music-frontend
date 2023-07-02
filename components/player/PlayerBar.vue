@@ -4,7 +4,7 @@
       <PlayerSongTile v-if="currentSong" :song="currentSong" />
     </v-col>
     <v-spacer />
-    <v-col cols="6">
+    <v-col cols="4">
       <PlayerControls v-if="currentSong" :song="currentSong" />
     </v-col>
     <v-spacer />

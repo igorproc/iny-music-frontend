@@ -1,22 +1,21 @@
 <template>
-  <div class="d-none d-md-block h-100 the-aside__resize-bar resize-bar" @drag="onDrag" />
-  <v-container :style="{ width: asideWidth }" class="d-flex justify-end the-aside h-100">
-    <div class="d-flex flex-column w-100 the-aside__container">
-      <CommonAsideMainTile class="mb-2" />
-      <CommonAsideMediaTile />
+  <div class="the-aside">
+    <div class="d-none d-md-block h-100 the-aside__resize-bar resize-bar" @drag="onDrag" />
+    <div :style="{ width: asideWidth }" class="d-flex justify-end the-aside h-100">
+      <div class="d-flex flex-column w-100 the-aside__container">
+        <CommonAsideMainTile class="mb-2" />
+        <CommonAsideMediaTile />
+      </div>
     </div>
-  </v-container>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 
-let asideWidth = ref<string>('300px')
+let asideWidth = ref('300px')
 const minAsideWidth = 100
 const maxAsideWith = 600
-// const emptyImg = new Image()
-
-// const onStartDrag = (event: DragEvent): void => event.dataTransfer?.setDragImage(emptyImg, event.clientX, event.clientY)
 
 const onDrag = (event: DragEvent): void => {
   const dragWidth: number = event.clientX
@@ -28,8 +27,10 @@ const onDrag = (event: DragEvent): void => {
 
 <style lang="scss">
 .the-aside {
+  position: relative;
   &__resize-bar {
-    right: 0;
+    right: -5px;
+    z-index: 1;
     position: absolute;
     width: 4px;
     cursor: e-resize;

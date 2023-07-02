@@ -1,6 +1,6 @@
 <template>
   <div v-if="song" class="player-song-tile d-flex align-center">
-    <v-img :src="song.artist.artistImage" max-width="56" class="player-song-tile__image mr-2">
+    <v-img :src="song.songImage" max-width="56" class="player-song-tile__image mr-2">
       <template #placeholder>
         <div class="d-flex align-center justify-center fill-height">
           <v-progress-circular color="grey-lighten-4" indeterminate></v-progress-circular>
@@ -11,23 +11,22 @@
       <div class="information__title">
         <span>{{ song.title }}</span>
       </div>
-      <div class="information__artists artists d-flex align-center">
+      <div class="information__artists artists">
         <nuxt-link
           :to="localePath({ name: 'playlist', params: { shareToken: song.artist.shareToken } })"
           class="artists__artist mr-1"
         >
-          <span>{{ getAuthorTtile }}</span>
+          <span>{{ song.artist.altName }}</span>
         </nuxt-link>
-        <div v-if="song.feats.length">
-          <nuxt-link
-            v-for="artist in song.feats"
-            :key="Number(artist.position)"
-            :to="localePath({ name: 'index' })"
-            class="artists__artist mr-1"
-          >
-            <span>{{ artist.name }}</span>
-          </nuxt-link>
-        </div>
+        <nuxt-link
+          v-for="artist in song.feats"
+          v-if="song.feats.length"
+          :key="Number(artist.position)"
+          :to="localePath({ name: 'index' })"
+          class="artists__artist mr-1"
+        >
+          <span>{{ artist.name }}</span>
+        </nuxt-link>
       </div>
     </div>
   </div>
@@ -44,12 +43,6 @@ const localePath = useLocalePath()
 const props = defineProps<IPlayerSongTileProps>()
 
 const { song } = toRefs(props)
-const getAuthorTtile = computed<string>(() => {
-  if (Array.isArray(props.song.feats) && props.song.feats.length) {
-    return `${props.song.artist.altName}`
-  }
-  return props.song.artist.altName
-})
 </script>
 
 <style lang="scss">

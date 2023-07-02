@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const copyrightData = ref<string>('© 2023 Spotyfree')
+const copyrightData = ref<string>('©2023 Spotyfree')
 </script>
 
 <style lang="scss">

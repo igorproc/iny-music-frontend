@@ -2,15 +2,16 @@
   <v-container fluid class="page-playlist">
     <div v-if="data?.getAlbumByShareToken" class="page-playlist__wrapper d-flex flex-column">
       <div class="page-playlist__header">
-        <PlaylistHeader :playlist="data?.getAlbumByShareToken" />
+        <PlaylistHeader :playlist="data.getAlbumByShareToken" />
       </div>
-      <div class="page-playlist__song-list mt-5">
+      <div v-if="data.getAlbumByShareToken.songs.length" class="page-playlist__song-list mt-5">
         <SongTile
           v-for="(song, index) in data?.getAlbumByShareToken.songs"
           :key="song.songUrl"
           :song="song"
           :position="index + 1"
           class="mt-5"
+          @song-is-selected="setSongQueue"
         />
       </div>
     </div>
@@ -25,14 +26,22 @@
 import { useRoute } from 'nuxt/app'
 import PlaylistHeader from '~/components/playlist/Header.vue'
 import SongTile from '~/components/playlist/SongTile.vue'
+import { DeepRequiredNonNullable, TGqlResult } from '~/types/gql'
+import { useSongStore } from '~/store/song/index'
+
 const localePath = useLocalePath()
 const route = useRoute()
+const songStore = useSongStore()
 
-const { data } = await useAsyncData(() => GqlGetAlbumDataQuery({ shareToken: route.params.shareToken[0] }))
-</script>
-
-<style lang="scss">
-.page-playlist {
-  padding-bottom: 30px;
+type TAlbumData = {
+  getAlbumByShareToken: DeepRequiredNonNullable<TGqlResult<'getAlbumDataQuery'>>
 }
-</style>
+
+const { data } = await useAsyncData<TAlbumData>(() => GqlGetAlbumDataQuery({ shareToken: route.params.shareToken[0] }))
+
+const setSongQueue = (sid: number) => {
+  if (!data.value?.getAlbumByShareToken.songs.length) return
+
+  songStore.setSongQueue(sid, data.value.getAlbumByShareToken.songs)
+}
+</script>

@@ -1,5 +1,6 @@
 fragment SongDataFragment on AlbumData {
   songs {
+    sid
     artist {
       id
       altName
@@ -16,5 +17,6 @@ fragment SongDataFragment on AlbumData {
     explicit
     duration
     songUrl
+    songImage
   }
 }

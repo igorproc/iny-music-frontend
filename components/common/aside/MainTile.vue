@@ -1,6 +1,6 @@
 <template>
   <div class="aside-main-tile d-flex flex-column">
-    <v-btn size="large" variant="text" class="tile__action px-0 align-center justify-start">
+    <v-btn size="large" variant="text" :to="localePath({ name: 'index' })" class="tile__action px-0 align-center justify-start">
       <v-icon size="22" icon="mdi-home-outline" class="tile__icon mr-2" />
       <span class="tile__content">Home</span>
     </v-btn>
@@ -11,7 +11,9 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const localePath = useLocalePath()
+</script>
 
 <style lang="scss">
 .aside-main-tile {

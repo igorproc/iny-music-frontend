@@ -27,10 +27,10 @@
 </template>
 
 <script setup lang="ts">
-import { TGqlResult } from '~/types/gql'
+import { TGqlResult, DeepRequiredNonNullable } from '~/types/gql'
 
 interface IProps {
-  playlist: TGqlResult<'getAlbumDataQuery'>['getAlbumByShareToken']
+  playlist: DeepRequiredNonNullable<TGqlResult<'getAlbumDataQuery'>['getAlbumByShareToken']>
 }
 
 const localePath = useLocalePath()

@@ -32,6 +32,7 @@
     "@pinia/nuxt": "^0.4.9",
     "consola": "^3.1.0",
     "graphql-client": "^2.0.1",
+    "mitt": "^3.0.0",
     "nuxt-font-loader": "^2.3.1",
     "nuxt-graphql-client": "^0.2.27",
     "pinia": "^2.0.35",

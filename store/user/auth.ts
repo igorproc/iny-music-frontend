@@ -32,7 +32,9 @@ export async function loginAccount(payload: TUserSignInData): Promise<boolean> {
     loginData: payload,
   })
 
-  if (userData) {
+  if (userData.loginUser) {
+    console.log('here')
+    
     setLocalFastLoginData(userData.loginUser)
     userStore.isAuth = true
     userStore.user = userData.loginUser

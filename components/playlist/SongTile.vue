@@ -31,7 +31,6 @@
 </template>
 
 <script setup lang="ts">
-import { useSongStore } from '~/store/song'
 import { TSong } from '~/types/player'
 
 interface IPlaylistSongTileProps {
@@ -41,12 +40,12 @@ interface IPlaylistSongTileProps {
 
 const localePath = useLocalePath()
 const props = defineProps<IPlaylistSongTileProps>()
+const emit = defineEmits<{ (e: 'song-is-selected', payload: number): number }>()
 const { song, position } = toRefs(props)
-const songStore = useSongStore()
 
 const prettySongTime = computed<string>(() => songPrettyTime(props.song.duration))
 const playSong = () => {
-  songStore.setSongQueue(song.value)
+  emit('song-is-selected', song.value.sid)
 }
 </script>
 

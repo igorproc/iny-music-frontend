@@ -5,11 +5,15 @@ export async function initilizateUser() {
   const userStore = useUserStore()
   const loginData = getFastLoginData()
 
-  if (!token.value) {
-    if (loginData) deleteFastLoginData()
+  if (!token.value || !loginData) {
+    if (loginData) {
+      deleteFastLoginData()
+      return
+    }
+    token.value = ''
     return
   }
-
+  
   const userData = await GqlGetUserDataByUid({ uid: Number(loginData.id) })
 
   if (userData) {

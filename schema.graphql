@@ -59,6 +59,7 @@ type FeatOutputforSong {
 }
 
 type SongDataFragment {
+  sid: Int!
   artist: ArtistOutputforSong!
   genres: [String!]!
   feats: [FeatOutputforSong!]!
@@ -66,7 +67,8 @@ type SongDataFragment {
   subtitle: String
   explicit: Boolean!
   duration: Int!
-  songUrl: String
+  songUrl: String!
+  songImage: String!
 }
 
 type AlbumData {

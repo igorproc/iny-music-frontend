@@ -1,8 +1,17 @@
 export function songPrettyTime(time = 0): string {
-  /**
-   * @todo add hours
-   */
-  if (!time) return '0:00'
-  if (Math.ceil(time % 60) < 10) return Math.floor(time / 60) + ':0' + Math.ceil(time % 60)
-  return Math.floor(time / 60) + ':' + Math.ceil(time % 60)
+  if (!time) return '00:00'
+
+  const totalMinutes = Math.floor(time / 60)
+
+  const seconds = Math.floor(time % 60)
+  const hours = Math.floor(totalMinutes / 60)
+  const minutes = Math.floor(totalMinutes % 60)
+  let hoursPart = ''
+  const minutesPart = minutes < 10 ? `0${minutes}:` : `${minutes}:`
+
+  if (hours) {
+    hoursPart = hours < 10 ? `0${hours}:` : `${hours}:`
+  }
+
+  return hoursPart + minutesPart + (seconds < 10 ? `0${seconds}` : `${seconds}`)
 }

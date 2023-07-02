@@ -1,22 +1,31 @@
 import { defineStore } from 'pinia'
-import { TSongQueue } from '~/types/player'
+import { TSong } from '~/types/player'
 
 type TSongStoreState = {
   currentSongId: number
-  songQueue: TSongQueue | null
+  songQueue: TSong[] | null
 }
 
-export const useSongStore = defineStore('song-store', {
+export const useSongStore = defineStore('song-queue-store', {
   state: (): TSongStoreState => ({
-    currentSongId: 1,
+    currentSongId: 0,
     songQueue: null,
   }),
+  getters: {
+    currentSongData(): TSong | void {
+      if (!this.songQueue) return
+
+      return this.songQueue.find((song) => song.sid === this.currentSongId)
+    },
+  },
   actions: {
-    setSongQueue(songList: TSongQueue['songs']) {
-      this.songQueue = {
-        playlistId: 1,
-        songs: songList,
-      }
+    setSongQueue(songId: number, songList: TSong[]) {
+      this.currentSongId = songId
+      this.songQueue = songList
+    },
+    shuffleQueue() {
+      if (!this.songQueue?.length) return
+      this.songQueue = this.songQueue.sort(() => 0.5 - Math.random())
     },
   },
 })

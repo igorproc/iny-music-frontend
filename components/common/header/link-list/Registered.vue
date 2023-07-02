@@ -14,4 +14,6 @@
 
 <script setup lang="ts">
 import HeaderAccountMenu from '~/components/common/header/account/menu.vue'
+
+const localePath = useLocalePath()
 </script>
