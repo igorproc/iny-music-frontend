@@ -1,0 +1,25 @@
+version: '2.2'
+
+services:
+  music_frontend_app:
+    image: node:20
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    build:
+      context: .
+      dockerfile: docker/DockerFile
+    command: ["npm", "run", "start"]
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.music_frontend_app.service=music_frontend_app@docker
+      - traefik.http.routers.music_frontend_app.rule=Host(`${APP_URL}`)
+      - traefik.http.services.music_frontend_app.loadbalancer.server.port=${APP_PORT}
+      - traefik.http.routers.music_frontend_app.entrypoints=web
+      - traefik.docker.network=network
+    networks:
+      traefik_network:
+
+networks:
+  traefik_network:
+    external: true
+    name: network

@@ -1,0 +1,7 @@
+query getAllGenres {
+    getAllGenreList {
+        __typename
+        gid
+        title
+    }
+}

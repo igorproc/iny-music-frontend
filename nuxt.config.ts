@@ -1,5 +1,5 @@
 import { pwa } from './config/pwa'
-import { appDescription } from './constants/index'
+import { GraphQlClient } from './config/GraphQlClient'
 
 export default defineNuxtConfig({
   modules: [
@@ -8,7 +8,10 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
+    'nuxt-graphql-client'
   ],
+
+  srcDir: 'app/',
 
   experimental: {
     // when using generate, payload js assets included in sw precache manifest
@@ -25,6 +28,10 @@ export default defineNuxtConfig({
 
   colorMode: {
     classSuffix: '',
+  },
+
+  devServer: {
+    port: Number(process.env.APP_PORT) || 3001,
   },
 
   nitro: {
@@ -50,13 +57,14 @@ export default defineNuxtConfig({
       ],
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: appDescription },
+        { name: 'description', content: process.env.APP_DESCRIPTION },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
       ],
     },
   },
 
   pwa,
+  'graphql-client': GraphQlClient,
 
   devtools: {
     enabled: true,

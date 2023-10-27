@@ -1,6 +1,5 @@
 import process from 'node:process'
 import type { ModuleOptions } from '@vite-pwa/nuxt'
-import { appDescription, appName } from '../constants/index'
 
 const scope = '/'
 
@@ -11,9 +10,9 @@ export const pwa: ModuleOptions = {
   manifest: {
     id: scope,
     scope,
-    name: appName,
-    short_name: appName,
-    description: appDescription,
+    name: process.env.APP_NAME || 'Iny Music',
+    short_name: process.env.APP_NAME || 'Iny',
+    description: process.env.APP_DESCRIPTION || '',
     theme_color: '#ffffff',
     icons: [
       {
@@ -73,7 +72,7 @@ export const pwa: ModuleOptions = {
   registerWebManifestInRouteRules: true,
   writePlugin: true,
   devOptions: {
-    enabled: process.env.VITE_PLUGIN_PWA === 'true',
+    enabled: !!process.env.VITE_PLUGIN_PWA,
     navigateFallback: scope,
   },
 }

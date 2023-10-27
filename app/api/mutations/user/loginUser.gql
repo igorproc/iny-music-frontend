@@ -1,0 +1,12 @@
+mutation loginUser($loginData: UserLogin!) {
+    loginUser(loginData: $loginData) {
+        uid
+        username
+        gender
+        birthday
+        phone
+        avatarUrl
+        email
+        role
+    }
+}
