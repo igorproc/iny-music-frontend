@@ -1,7 +1,9 @@
-import process from 'node:process'
+import process from 'process'
+
 import type { ModuleOptions } from '@vite-pwa/nuxt'
 
 const scope = '/'
+const CACHE_LIFETIME = 60 * 60 * 24 * 365 // <== 365 days
 
 export const pwa: ModuleOptions = {
   registerType: 'autoUpdate',
@@ -30,11 +32,11 @@ export const pwa: ModuleOptions = {
         sizes: '512x512',
         type: 'image/png',
         purpose: 'any maskable',
-      },
+      }
     ],
   },
   workbox: {
-    globPatterns: ['**/*.{js,css,html,txt,png,ico,svg}'],
+    globPatterns: ['app/**/*.{js,css,html,txt,png,ico,svg}'],
     navigateFallbackDenylist: [/^\/api\//],
     navigateFallback: '/',
     cleanupOutdatedCaches: true,
@@ -46,7 +48,7 @@ export const pwa: ModuleOptions = {
           cacheName: 'google-fonts-cache',
           expiration: {
             maxEntries: 10,
-            maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
+            maxAgeSeconds: CACHE_LIFETIME,
           },
           cacheableResponse: {
             statuses: [0, 200],
@@ -60,13 +62,13 @@ export const pwa: ModuleOptions = {
           cacheName: 'gstatic-fonts-cache',
           expiration: {
             maxEntries: 10,
-            maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
+            maxAgeSeconds: CACHE_LIFETIME,
           },
           cacheableResponse: {
             statuses: [0, 200],
           },
         },
-      },
+      }
     ],
   },
   registerWebManifestInRouteRules: true,

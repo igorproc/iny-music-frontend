@@ -5,12 +5,12 @@
         <div v-if="online">
           Is online
         </div>
-        <div v-else text-gray:80>
+        <div v-else>
           You're offline
         </div>
       </ClientOnly>
       <template #fallback>
-        <div italic op50>
+        <div>
           <span animate-pulse>Loading...</span>
         </div>
       </template>
@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-  import AppFooter from '~/components/common/Footer.vue'
+import { useOnline } from '@vueuse/core'
 
-  const online = useOnline()
+const online = useOnline()
 </script>

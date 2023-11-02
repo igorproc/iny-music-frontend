@@ -1,10 +1,10 @@
 <template>
-  <main class="px-10 py-20 text-center">
+  <main class="app-default-layout">
     <slot />
     <AppFooter />
   </main>
 </template>
 
 <script setup lang="ts">
-  import AppFooter from '~/components/common/Footer.vue'
+import AppFooter from '~/components/common/AppFooter.vue'
 </script>
