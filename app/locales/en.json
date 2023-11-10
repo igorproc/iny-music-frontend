@@ -1,5 +1,31 @@
 {
-  "common": {
-    "test": "Hello"
+  "global": {
+    "appTitle": "SPECTO.SU"
+  },
+  "aside": {
+    "homeLink": {
+      "text": "Home",
+      "ariaLabel": "click button for go to home page"
+    },
+    "searchLink": {
+      "text": "Search",
+      "ariaLabel": "click button for search something..."
+    },
+    "historySection": {
+      "likesList": {
+        "text": "My library",
+        "ariaLabel": "click button for go to your library"
+      }
+    },
+    "tip": {
+      "newPlaylist": {
+        "title": "Create your first playlist",
+        "description": "It's not hard at all! We'll help you.",
+        "linkText": "Create a playlist"
+      }
+    },
+    "languageToggle": {
+      "ariaLabel": "Toggle to open modal with aviliable languages"
+    }
   }
 }

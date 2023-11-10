@@ -1,0 +1,77 @@
+$flex-properties-ai: (
+        'start': 'flex-start',
+        'end': 'flex-end',
+        'center': 'center',
+        'baseline': 'baseline',
+        'stretch': 'stretch'
+);
+
+$flex-properties-jc: (
+        'start': 'flex-start',
+        'end': 'flex-end',
+        'center': 'center',
+        'between': 'space-between',
+        'around': 'space-around',
+        'evenly': 'space-evenly'
+);
+
+$flex-properties-fw: (
+        'nowrap',
+        'wrap',
+        'wrap-reverse'
+);
+
+$flex-properties-fd: (
+        'row',
+        'row-reverse',
+        'column',
+        'column-reverse'
+);
+
+@mixin gen-flex($display-breakpoints) {
+  @each $propertyName, $property in $flex-properties-jc {
+    .flex-#{$propertyName} {
+      justify-content: $property;
+    }
+  }
+  @each $property in $flex-properties-fw {
+    .flex-#{$property} {
+      flex-wrap: $property;
+    }
+  }
+  @each $property in $flex-properties-fd {
+    .flex-#{$property} {
+      flex-direction: $property;
+    }
+  }
+  @each $propertyName, $property in $flex-properties-ai {
+    .flex-#{$propertyName} {
+      align-items: $property;
+    }
+  }
+
+  @each $name, $size in $display-breakpoints {
+    @media (min-width: $size) {
+      @each $propertyName, $property in $flex-properties-jc {
+        .flex-#{$name}-#{$propertyName} {
+          justify-content: $property;
+        }
+      }
+      @each $property in $flex-properties-fw {
+        .flex-#{$name}-#{$property} {
+          flex-wrap: $property;
+        }
+      }
+      @each $property in $flex-properties-fd {
+        .flex-#{$name}-#{$property} {
+          flex-direction: $property;
+        }
+      }
+      @each $propertyName, $property in $flex-properties-ai {
+        .flex-#{$name}-#{$propertyName} {
+          align-items: $property;
+        }
+      }
+    }
+  }
+}

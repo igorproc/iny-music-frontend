@@ -1,4 +1,5 @@
 <template>
+  <AppGlobalScope />
   <div id="root" class="root">
     <NuxtLayout>
       <NuxtPage />
@@ -8,6 +9,7 @@
 
 <script setup lang="ts">
 import { appName } from '~/constants'
+import AppGlobalScope from '~/components/common/AppGlobalScope.vue'
 
 useHead({ title: appName, })
 </script>
@@ -19,8 +21,8 @@ html, body , #__nuxt{
   padding: 0;
 }
 
-html {
-  background: $background-color;
-  color: $primary-color;
+.root {
+  height: 100vh;
+  overflow: hidden;
 }
 </style>

@@ -1,5 +1,7 @@
 import { defineStore } from 'pinia'
 
+import { initilizateUserLogin } from '~/store/user/init'
+
 export const useIndexStore = defineStore('index-store', {
   actions: {
     async init () {
@@ -10,11 +12,7 @@ export const useIndexStore = defineStore('index-store', {
       })
     },
     async clientInit () {
-      return await new Promise((resolve) => {
-        setTimeout(() => {
-          resolve('Client init')
-        }, 50)
-      })
+      return await initilizateUserLogin()
     },
     async serverInit () {
       return await new Promise((resolve) => {

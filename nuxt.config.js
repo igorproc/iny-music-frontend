@@ -4,6 +4,7 @@ import { eslint } from './config/eslint'
 import { pwa } from './config/pwa'
 import { GraphQlClient } from './config/GraphQlClient'
 import { googleFonts } from './config/fonts'
+import { nuxtIcon } from './config/icons'
 
 export default defineNuxtConfig({
   ssr: !!process.env.IS_SSR,
@@ -37,8 +38,8 @@ export default defineNuxtConfig({
     'nuxt-graphql-client',
     // https://google-fonts.nuxtjs.org/getting-started/options
     '@nuxtjs/google-fonts',
-    // https://phosphoricons.com/
-    'nuxt-phosphor-icons'
+    // https://nuxt.com/modules/icon
+    'nuxt-icon',
   ],
 
   experimental: {
@@ -48,21 +49,24 @@ export default defineNuxtConfig({
     typedPages: true
   },
 
-  css: [
-    '~/assets/style/app.scss'
-  ],
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `
+            @import "~/assets/style/app.scss";
+            @import "~/assets/style/source/ui/_index.scss";
+          `
+        }
+      }
+    }
+  },
 
   colorMode: {
     preference: 'system',
-    fallback: 'light',
+    fallback: 'dark',
     classSuffix: '-theme',
     storageKey: 'selected-theme'
-  },
-
-  styleResources: {
-    scss: [
-      '~/assets/style/app/vars/variables.scss'
-    ]
   },
 
   devServer: {
@@ -79,16 +83,6 @@ export default defineNuxtConfig({
       crawlLinks: false,
       routes: ['/'],
       ignore: []
-    }
-  },
-
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@import "~/assets/style/source/app/vars/variables.scss";'
-        }
-      }
     }
   },
 
@@ -115,7 +109,7 @@ export default defineNuxtConfig({
     legacy: true,
     lazy: true,
 
-    baseUrl: process.env.BASE_URL || '',
+    baseUrl: process.env.BASE_URL || '/',
     langDir: 'locales',
     defaultLocale: process.env.DEFAULT_SELECTED_LOCALE,
     detectBrowserLanguage: true,
@@ -129,15 +123,14 @@ export default defineNuxtConfig({
       },
       {
         code: 'ru_RU',
-        name: 'Russian',
+        name: 'Русский',
         files: ['ru']
       }
     ]
   },
   googleFonts,
-  phosphor: {
-    prefix: 'pi-'
-  },
+  // Icons-list: https://icones.js.org/
+  nuxtIcon,
 
   devtools: {
     enabled: process.env.BUILD_MODE !== 'production'

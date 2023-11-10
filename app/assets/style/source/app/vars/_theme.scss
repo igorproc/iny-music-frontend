@@ -1,12 +1,36 @@
 .light-theme {
-  --primary-color: #000;
-  --background-color: #fff;
+  --background-color: #000;
+  --surface-color: #121212;
+  --surface-variant: #242424;
+  --accent-color: #fefefe;
+  --primary-color: #ac82a4;
+  --secondary-color: #9b7b93;
+  --error-color: #B00020;
+  --info-color: #2196F3;
+  --success-color: #4CAF50;
+  --warning-color: #FB8C00;
 }
 
 .dark-theme {
-  --primary-color: #fff;
   --background-color: #000;
+  --surface-color: #121212;
+  --surface-variant: #242424;
+  --accent-color: #fefefe;
+  --primary-color: #ac82a4;
+  --secondary-color: #9b7b93;
+  --error-color: #B00020;
+  --info-color: #2196F3;
+  --success-color: #4CAF50;
+  --warning-color: #FB8C00;
 }
 
 $primary-color: var(--primary-color);
+$secondary-color: var(--secondary-color);
 $background-color: var(--background-color);
+$accent-color: var(--accent-color);
+$surface-color: var(--surface-color);
+$surface-variant: var(--surface-variant);
+$success-color: var(--success-color);
+$info-color: var(--info-color);
+$warning-color: var(--warning-color);
+$error-color: var(--error-color);

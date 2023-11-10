@@ -1,0 +1,5 @@
+mutation createClientId ($clientIdData: NewDeviceInput!) {
+    createUserDevice(deviceData: $clientIdData) {
+        clientId
+    }
+}

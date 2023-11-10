@@ -19,7 +19,7 @@ async function initApp () {
 
   async function onClientInit () {
     const indexStore = useIndexStore($pinia)
-    consola.info(await indexStore.clientInit())
+    await indexStore.clientInit()
   }
 
   await onInit()
