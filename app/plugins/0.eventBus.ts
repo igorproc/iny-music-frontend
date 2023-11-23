@@ -1,13 +1,13 @@
 import mitt from 'mitt'
 
 interface User {
-    name: string
+  name: string
 }
 
 type ApplicationEvents = {
-    'user:registered': User
-    'user:deleted': User
-};
+  'user:registered': User
+  'user:deleted': User
+}
 
 export default defineNuxtPlugin(() => {
   const emitter = mitt<ApplicationEvents>()

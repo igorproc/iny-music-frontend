@@ -1,13 +1,6 @@
 <template>
-  <NuxtLink
-    :to="localePath({ name: 'index' })"
-    class="ui-logo"
-  >
-    <span
-      :style="logoContentSize"
-      :class="{ '--default-size': !logoContentSize }"
-      class="ui-logo__text"
-    >
+  <NuxtLink :to="localePath({ name: 'index' })" class="ui-logo">
+    <span :style="logoContentSize" :class="{ '--default-size': !logoContentSize }" class="ui-logo__text">
       {{ logoText }}
     </span>
   </NuxtLink>
@@ -15,8 +8,8 @@
 
 <script setup lang="ts">
 interface Props {
-  textSize?: string,
-  content?: string,
+  textSize?: string
+  content?: string
 }
 
 const localePath = useLocalePath()
@@ -33,7 +26,7 @@ const logoText = computed(() => {
 const logoContentSize = computed(() => {
   if (textSize && textSize?.value) {
     return {
-      fontSize: `${textSize.value}px`
+      fontSize: `${textSize.value}px`,
     }
   }
   return ''
@@ -43,14 +36,16 @@ const logoContentSize = computed(() => {
 <style lang="scss">
 .ui-logo {
   text-decoration: unset;
+
   .ui-logo__text {
-    font-family: "Bebas Neue", sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     background: $brand-color;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-      &.--default-size {
-        font-size: lib-font-size(36);
-      }
+
+    &.--default-size {
+      font-size: lib-font-size(36);
+    }
   }
 }
 </style>

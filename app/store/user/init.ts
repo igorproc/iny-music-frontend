@@ -16,11 +16,7 @@ export const initilizateUserLogin = async () => {
   }
 
   if (!cookieClientId.value) {
-    const clientId = await createClientId()
-    if (clientId) {
-      cookieClientId.value = clientId
-      userStore.clientId = clientId
-    }
+    await createClientId()
     return
   }
   userStore.clientId = cookieClientId.value
@@ -38,18 +34,23 @@ export const initilizateUserLogin = async () => {
   userStore.isAuth = true
 }
 
-async function createClientId () {
+export const createClientId = async () => {
+  const userStore = useUserStore()
+
+  const cookieClientId = useCookie('client_id', { maxAge: 60 * 60 * 24 * 30 })
+
   try {
     const payload: TClientIdCreate['input']['clientIdData'] = {
       appId: 1,
-      platform: getUserPlatform()
+      platform: getUserPlatform(),
     }
     const clientId: TClientIdCreate['response'] = await GqlCreateClientId({ clientIdData: payload })
 
-    if (!clientId.createUserDevice) {
-      return ''
+    if (!clientId.createUserDevice || !clientId.createUserDevice.clientId) {
+      return
     }
-    return clientId.createUserDevice.clientId
+    cookieClientId.value = clientId.createUserDevice.clientId
+    userStore.clientId = clientId.createUserDevice.clientId
   } catch (error) {
     throw error
   }

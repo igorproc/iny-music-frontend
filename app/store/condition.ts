@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 
 export const useConditionStore = defineStore('condition-store', {
-  state () {
+  state() {
     return {
       asideIsVisible: true,
       switchLanguageModalIsVisible: false,
@@ -9,20 +9,20 @@ export const useConditionStore = defineStore('condition-store', {
     }
   },
   actions: {
-    toggleAside () {
+    toggleAside() {
       this.asideIsVisible = !this.asideIsVisible
     },
-    closeSwitchLanguageModal () {
+    closeSwitchLanguageModal() {
       this.switchLanguageModalIsVisible = false
     },
-    openSwitchLanguageModal () {
+    openSwitchLanguageModal() {
       this.switchLanguageModalIsVisible = true
     },
-    openHeaderDrawer () {
+    openHeaderDrawer() {
       this.headerDrawerIsVisible = true
     },
-    closeHeaderDrawer () {
+    closeHeaderDrawer() {
       this.headerDrawerIsVisible = false
-    }
-  }
+    },
+  },
 })

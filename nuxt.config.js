@@ -40,6 +40,8 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     // https://nuxt.com/modules/icon
     'nuxt-icon',
+    // https://html-validator.nuxtjs.org/
+    '@nuxtjs/html-validator'
   ],
 
   experimental: {
@@ -49,12 +51,13 @@ export default defineNuxtConfig({
     typedPages: true
   },
 
+  css: ['~/assets/style/app.scss'],
+
   vite: {
     css: {
       preprocessorOptions: {
         scss: {
           additionalData: `
-            @import "~/assets/style/app.scss";
             @import "~/assets/style/source/ui/_index.scss";
           `
         }

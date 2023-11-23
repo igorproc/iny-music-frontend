@@ -1,20 +1,17 @@
 {
-  "global": {
-    "appTitle": "SPECTO.SU"
-  },
   "aside": {
     "homeLink": {
-      "text": "Home",
-      "ariaLabel": "click button for go to home page"
+      "ariaLabel": "click button for go to home page",
+      "text": "Home"
     },
     "searchLink": {
-      "text": "Search",
-      "ariaLabel": "click button for search something..."
+      "ariaLabel": "click button for search something...",
+      "text": "Search"
     },
     "historySection": {
       "likesList": {
-        "text": "My library",
-        "ariaLabel": "click button for go to your library"
+        "ariaLabel": "click button for go to your library",
+        "text": "My library"
       }
     },
     "tip": {
@@ -27,5 +24,8 @@
     "languageToggle": {
       "ariaLabel": "Toggle to open modal with aviliable languages"
     }
+  },
+  "global": {
+    "appTitle": "SPECTO.SU"
   }
 }

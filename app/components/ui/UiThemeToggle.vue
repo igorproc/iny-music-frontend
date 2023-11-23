@@ -1,15 +1,8 @@
 <template>
   <ClientOnly>
     <div class="ui-theme-toggle toggle">
-      <button
-        :aria-label="$t('aside.toggleTheme.ariaLabel')"
-        class="toggle__action"
-        @click="toggleIcon"
-      >
-        <Icon
-          :name="currentThemeInterface.iconName"
-          size="20"
-        />
+      <button :aria-label="$t('aside.toggleTheme.ariaLabel')" class="toggle__action" @click="toggleIcon">
+        <Icon :name="currentThemeInterface.iconName" size="20" />
       </button>
     </div>
   </ClientOnly>
@@ -21,7 +14,7 @@ import { aviliableThemes } from '~/constants/theme'
 const colorMode = useColorMode()
 
 const currentThemeInterface = computed(() => {
-  const themeCandidate = aviliableThemes.find(theme => theme.name === colorMode.value)
+  const themeCandidate = aviliableThemes.find((theme) => theme.name === colorMode.value)
   if (!themeCandidate) {
     return aviliableThemes[0]
   }
@@ -42,7 +35,7 @@ const toggleIcon = () => {
 .ui-theme-toggle {
   .toggle__action {
     background: transparent;
-    color: $accent-color;
+    color: var(--accent-color);
     border: none;
     cursor: pointer;
   }

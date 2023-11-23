@@ -31,7 +31,7 @@ const currentIconName = computed(() => {
     padding: 0;
     background: transparent;
     border: none;
-    color: $accent-color;
+    color: var(--accent-color);
   }
 }
 </style>

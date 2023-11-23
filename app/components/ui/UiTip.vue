@@ -20,10 +20,10 @@
 
 <script setup lang="ts">
 interface Props {
-  title: string,
-  description: string,
-  link: string,
-  linkText: string,
+  title: string
+  description: string
+  link: string
+  linkText: string
 }
 
 const props = defineProps<Props>()
@@ -34,7 +34,7 @@ const { title, description, link, linkText } = toRefs(props)
 .ui-tip-card {
   margin: 8px 0;
   padding: 8px 16px;
-  background-color: $surface-variant;
+  background-color: var(--surface-variant);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -50,7 +50,7 @@ const { title, description, link, linkText } = toRefs(props)
       font-size: lib-font-size(13);
       font-weight: bold;
       text-wrap: balance;
-      color: $primary-color;
+      color: var(--primary-color);
     }
     .card__description {
       margin-top: 5px;
@@ -64,14 +64,14 @@ const { title, description, link, linkText } = toRefs(props)
 
     .card__link {
       padding: 4px 16px;
-      background-color: $accent-color;
+      background-color: var(--accent-color);
       border-radius: 20px;
       cursor: pointer;
 
       .card__link-text {
         font-size: lib-font-size(14);
         font-weight: bold;
-        color: $secondary-color;
+        color: var(--secondary-color);
       }
 
       &:hover {

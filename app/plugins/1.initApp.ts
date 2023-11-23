@@ -3,21 +3,21 @@ import { consola } from 'consola'
 
 import { useIndexStore } from '~/store'
 
-async function initApp () {
+async function initApp() {
   const nuxtApp = useNuxtApp()
   const $pinia = usePinia()
 
-  async function onInit () {
+  async function onInit() {
     const indexStore = useIndexStore($pinia)
     consola.info(await indexStore.init())
   }
 
-  async function onServerInit () {
+  async function onServerInit() {
     const indexStore = useIndexStore($pinia)
     consola.info(await indexStore.serverInit())
   }
 
-  async function onClientInit () {
+  async function onClientInit() {
     const indexStore = useIndexStore($pinia)
     await indexStore.clientInit()
   }

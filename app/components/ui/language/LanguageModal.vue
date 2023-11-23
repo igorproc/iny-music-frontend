@@ -1,19 +1,12 @@
 <template>
-  <div
-    v-if="conditionStore.switchLanguageModalIsVisible"
-    class="app-language-modal"
-  >
+  <div v-if="conditionStore.switchLanguageModalIsVisible" class="app-language-modal">
     <div class="modal__dialog dialog">
       <div class="dialog__content">
         <div class="content__header">
-          <h2
-            class="header__title"
-          >
+          <h2 class="header__title">
             {{ $t('Выбрать язык') }}
           </h2>
-          <span
-            class="header__description"
-          >
+          <span class="header__description">
             {{ $t('Информация на сайте specto.su будет обновлена.') }}
           </span>
           <button
@@ -65,7 +58,7 @@ const { locales, locale, setLocale } = useI18n()
     left: 50%;
     transform: translate(-50%, -50%);
     width: 80%;
-    background-color: $surface-color;
+    background-color: var(--surface-color);
     border-radius: 8px;
 
     .dialog__content {
@@ -77,12 +70,12 @@ const { locales, locale, setLocale } = useI18n()
         border-bottom: 1px solid;
 
         .header__title {
-          color: $primary-color;
+          color: var(--primary-color);
           margin-top: 0;
           margin-bottom: 0.75rem;
         }
         .header__description {
-          color: $primary-color;
+          color: var(--primary-color);
         }
       }
       .content__locales-list {
@@ -97,7 +90,7 @@ const { locales, locale, setLocale } = useI18n()
           background: transparent;
           border: 1px solid;
           border-radius: 20px;
-          color: $primary-color;
+          color: var(--primary-color);
           cursor: pointer;
 
           &[disabled] {

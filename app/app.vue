@@ -1,6 +1,6 @@
 <template>
-  <AppGlobalScope />
   <div id="root" class="root">
+    <AppGlobalScope />
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
@@ -11,16 +11,10 @@
 import { appName } from '~/constants'
 import AppGlobalScope from '~/components/common/AppGlobalScope.vue'
 
-useHead({ title: appName, })
+useHead({ title: appName })
 </script>
 
 <style lang="scss">
-html, body , #__nuxt{
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-}
-
 .root {
   height: 100vh;
   overflow: hidden;

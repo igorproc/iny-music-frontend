@@ -9,9 +9,7 @@
       <div class="link__prepend-text">
         <slot name="prepend" />
       </div>
-      <span
-        class="link__text"
-      >
+      <span class="link__text">
         {{ text }}
       </span>
       <div class="link__append-text">
@@ -23,14 +21,13 @@
 
 <script setup lang="ts">
 interface Props {
-  pageLink: string,
-  needHoverEffect?: boolean,
-  text: string,
+  pageLink: string
+  needHoverEffect?: boolean
+  text: string
 }
 
 const props = defineProps<Props>()
 const { pageLink, needHoverEffect, text } = toRefs(props)
-
 </script>
 
 <style lang="scss">
@@ -44,7 +41,7 @@ const { pageLink, needHoverEffect, text } = toRefs(props)
 
     .link__prepend-text,
     .link__append-text {
-      color: $primary-color;
+      color: var(--primary-color);
       display: flex;
       align-items: center;
     }
@@ -55,13 +52,13 @@ const { pageLink, needHoverEffect, text } = toRefs(props)
       margin-left: 10px;
     }
     .link__text {
-      color: $secondary-color;
+      color: var(--secondary-color);
     }
     &.--default-active {
       .link__text,
       .link__prepend-text,
       .link__append-text {
-        color: $accent-color;
+        color: var(--accent-color);
       }
     }
     &.--default-hover:hover {
@@ -69,7 +66,7 @@ const { pageLink, needHoverEffect, text } = toRefs(props)
       .link__prepend-text,
       .link__append-text {
         transition: color 0.2s;
-        color: $accent-color;
+        color: var(--accent-color);
       }
     }
   }

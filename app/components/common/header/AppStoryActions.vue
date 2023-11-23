@@ -1,17 +1,9 @@
 <template>
   <div class="app-story-actions">
-    <button
-      :disabled="!canRouteBack"
-      class="actions__action"
-      @click="$router.back"
-    >
+    <button :disabled="!canRouteBack" class="actions__action" @click="$router.back">
       <Icon name="ph:arrow-left" size="20" />
     </button>
-    <button
-      :disabled="!canRouteForward"
-      class="actions__action"
-      @click="$router.forward"
-    >
+    <button :disabled="!canRouteForward" class="actions__action" @click="$router.forward">
       <Icon name="ph:arrow-right" size="20" />
     </button>
   </div>
@@ -42,9 +34,9 @@ watch(route, () => {
   .actions__action {
     padding: 6px;
     background: transparent;
-    border: 3px solid $surface-color;
+    border: 3px solid var(--surface-color);
     border-radius: 100%;
-    color: $accent-color;
+    color: var(--accent-color);
     cursor: pointer;
 
     &[disabled] {

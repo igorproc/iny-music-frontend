@@ -16,13 +16,9 @@ export const GraphQlClient: ModuleOptions = {
       headers: {
         'Apollo-Require-Preflight': 'true',
       },
-      token: {
-        type: 'Bearer',
-        name: 'Authorization',
-      },
       corsOptions: {
         mode: 'cors',
-        credentials: 'same-origin',
+        credentials: 'include',
       },
       schema: '../schema.gql',
     },

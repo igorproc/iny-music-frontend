@@ -5,10 +5,7 @@
       <AppStoryActions />
       <AppHeaderDrawerTrigger />
     </div>
-    <div
-      v-if="!userStore.isAuth"
-      class="app-header__links"
-    >
+    <div v-if="!userStore.isAuth" class="app-header__links">
       <UiLink
         v-for="link in headerLinks"
         :key="link.id"
@@ -16,19 +13,11 @@
         :text="link.text"
         :page-link="link.pageLink"
       />
-      <hr class="links__divider">
+      <hr class="links__divider" />
     </div>
-    <div class="app-header__authorize-action">
-      <UiLink
-        need-hover-effect
-        :text="$t('Зарегестрироваться')"
-        :page-link="localePath({ name: 'sign-up' })"
-      />
-      <UiLink
-        :text="$t('Войти')"
-        :page-link="localePath({ name: 'sign-in' })"
-        class="action__sign-in"
-      />
+    <div v-if="!userStore.isAuth" class="app-header__authorize-action">
+      <UiLink need-hover-effect :text="$t('Зарегестрироваться')" :page-link="localePath({ name: 'auth-sign-up' })" />
+      <UiLink :text="$t('Войти')" :page-link="localePath({ name: 'auth-sign-in' })" class="action__sign-in" />
     </div>
   </header>
 </template>
@@ -59,14 +48,13 @@ const headerLinks: IDefaultLink[] = [
     text: t('Скачать'),
     pageLink: localePath({ name: 'download' }),
     iconName: '',
-  }
+  },
 ]
 </script>
 
 <style lang="scss">
 .app-header {
   padding: 12px 24px;
-  height: calc(64px - 24px);
   background-color: transparentize(#000, 0.5);
   display: grid;
   grid-template-columns: 12fr;
@@ -81,7 +69,7 @@ const headerLinks: IDefaultLink[] = [
     }
   }
   .app-header__links,
-  .app-header__authorize-action{
+  .app-header__authorize-action {
     display: none;
   }
   @media screen and (min-width: map-get($display-breakpoints, 'md')) {
@@ -109,7 +97,6 @@ const headerLinks: IDefaultLink[] = [
       .links__divider {
         margin: 0;
         height: lib-font-size(18);
-        color: $accent-color;
       }
     }
     .app-header__authorize-action {
@@ -124,10 +111,10 @@ const headerLinks: IDefaultLink[] = [
       .action__sign-in {
         padding: 8px 12px;
         border-radius: 20px;
-        border: 1px solid $accent-color;
+        border: 1px solid var(--accent-color);
 
         .link__text {
-          color: $accent-color;
+          color: var(--accent-color);
           font-size: lib-font-size(16);
           font-weight: normal;
         }

@@ -1,2 +1,7 @@
 @import "vars";
+@import "global";
 @import "utilites.scss";
+
+body {
+  font-family: "Montserrat", Roboto, sans-serif;
+}

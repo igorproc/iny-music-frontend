@@ -4,14 +4,12 @@
   </div>
 </template>
 
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <style lang="scss">
 .ui-card {
   padding: 12px 8px;
-  background: $surface-color;
+  background: var(--surface-color);
   border-radius: 8px;
 }
 </style>

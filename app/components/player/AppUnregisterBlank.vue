@@ -5,11 +5,15 @@
         {{ $t('Предварительный просмотр Specto.su') }}
       </span>
       <p class="content__description">
-        {{ $t('Зарегистрируйся, чтобы слушать музыку и подкасты без ограничений. Иногда мы будем показывать рекламу, но ты сможешь пользоваться сервисом бесплатно!') }}
+        {{
+          $t(
+            'Зарегистрируйся, чтобы слушать музыку и подкасты без ограничений. Иногда мы будем показывать рекламу, но ты сможешь пользоваться сервисом бесплатно!',
+          )
+        }}
       </p>
     </div>
     <NuxtLink
-      :to="localePath({ name: 'sign-up' })"
+      :to="localePath({ name: 'auth-sign-up' })"
       :aria-label="$t('Нажмите чтобы зарегестрироваться')"
       class="blank__action"
     >
@@ -25,6 +29,7 @@ const localePath = useLocalePath()
 <style lang="scss">
 .app-player-unregister-blank {
   display: none;
+  height: 100%;
 
   @media screen and (min-width: map-get($display-breakpoints, 'md')) {
     padding: 16px 24px;
@@ -41,7 +46,7 @@ const localePath = useLocalePath()
 
       .content__title,
       .content__description {
-        color: $accent-color;
+        color: var(--accent-color);
       }
       .content__title {
         font-size: lib-font-size(14);

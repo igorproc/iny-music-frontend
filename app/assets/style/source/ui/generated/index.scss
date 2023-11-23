@@ -1,8 +1,0 @@
-// Gen mixins
-@import "display";
-@import "flex";
-// Vars
-@import "../global/breakpoints";
-
-@include gen-display-breakpoints($display-breakpoints);
-@include gen-flex($display-breakpoints);

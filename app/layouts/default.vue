@@ -25,14 +25,14 @@ import AppPlayer from '~/components/player/AppPlayer.vue'
 
 <style lang="scss">
 .app-default-layout {
-  background: $background-color;
+  background: var(--background-color);
   position: relative;
   height: 100%;
   display: flex;
 
   .app-default-layout__aside {
     padding: 12px 10px;
-    height: calc(100% - 115px);
+    height: calc(100% - 91px);
     display: none;
   }
   .app-default-layout__wrapper {
@@ -40,7 +40,7 @@ import AppPlayer from '~/components/player/AppPlayer.vue'
     position: relative;
     height: calc(100% - 115px);
     width: 100%;
-    background: $surface-color;
+    background: var(--surface-color);
     border-radius: 8px;
 
     .wrapper__header {
@@ -52,6 +52,7 @@ import AppPlayer from '~/components/player/AppPlayer.vue'
     .wrapper__content {
       padding: 12px 24px;
       margin-top: 64px;
+      height: calc(100% - 64px);
     }
   }
   .app-default-layout__footer {
@@ -60,7 +61,7 @@ import AppPlayer from '~/components/player/AppPlayer.vue'
     left: 0;
     bottom: 0;
   }
-  @media screen and (min-width: map-get($display-breakpoints, 'md')){
+  @media screen and (min-width: map-get($display-breakpoints, 'md')) {
     padding: 8px;
 
     .app-default-layout__aside {

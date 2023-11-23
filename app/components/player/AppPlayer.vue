@@ -9,3 +9,9 @@ import AppUnregisterBlank from '~/components/player/AppUnregisterBlank.vue'
 
 const userStore = useUserStore()
 </script>
+
+<style lang="scss">
+.app-player-placeholder {
+  height: 98px;
+}
+</style>

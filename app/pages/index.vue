@@ -2,12 +2,8 @@
   <div>
     <Suspense>
       <ClientOnly>
-        <div v-if="online">
-          Is online
-        </div>
-        <div v-else>
-          You're offline
-        </div>
+        <div v-if="online">Is online</div>
+        <div v-else>You're offline</div>
       </ClientOnly>
       <template #fallback>
         <div>

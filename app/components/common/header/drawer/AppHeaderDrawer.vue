@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="{ '--is-open': conditionStore.headerDrawerIsVisible }"
-    class="app-header-drawer"
-  >
+  <div :class="{ '--is-open': conditionStore.headerDrawerIsVisible }" class="app-header-drawer">
     <div class="drawer__dialog">
       <button
         :aria-label="$t('Нажмите чтобы закрыть менб с ссылками')"
@@ -15,9 +12,10 @@
         <NuxtLink
           v-for="link in drawerLinks"
           :key="link.name"
-          :to="link.padding"
+          :to="link.pageLink"
           :aria-label="link.ariaLabel"
           class="list__item"
+          @click="conditionStore.closeHeaderDrawer"
         >
           {{ link.name }}
         </NuxtLink>
@@ -39,13 +37,13 @@ const guestLinks: any[] = [
   {
     name: t('Зарегестрироваться'),
     ariaLabel: t('Нажмите, чтобы перейти на страницу регистрации'),
-    pageLink: localePath({ name: 'sign-up' })
+    pageLink: localePath({ name: 'auth-sign-up' }),
   },
   {
     name: t('Войти'),
     ariaLabel: t('Нажмите, чтобы перейти на страницу авторизации'),
-    pageLink: localePath({ name: 'sign-in' })
-  }
+    pageLink: localePath({ name: 'auth-sign-in' }),
+  },
 ]
 
 const drawerLinks = computed(() => {
@@ -64,7 +62,7 @@ const drawerLinks = computed(() => {
   left: -100%;
   width: 100%;
   height: 100%;
-  background-color: $background-color;
+  background-color: var(--background-color);
   transition: left 1s ease;
   z-index: 9999;
 
@@ -78,13 +76,13 @@ const drawerLinks = computed(() => {
     position: relative;
 
     .drawer__close-action {
-      padding: 12px 24px;
+      padding: 32px 30px;
       position: absolute;
       top: 0;
       right: 0;
       background: transparent;
       border: none;
-      color: $accent-color;
+      color: var(--accent-color);
     }
     .dialog__list {
       display: flex;
@@ -93,9 +91,10 @@ const drawerLinks = computed(() => {
 
       .list__item {
         padding: 12px 0;
+        text-decoration: none;
         font-size: lib-font-size(18);
         font-weight: bold;
-        color: $accent-color;
+        color: var(--accent-color);
       }
     }
   }

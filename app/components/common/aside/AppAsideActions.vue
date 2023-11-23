@@ -1,37 +1,20 @@
 <template>
-  <UiCard
-    :class="{ '--hidden': !conditionStore.asideIsVisible }"
-    class="app-aside-actions actions"
-  >
+  <UiCard :class="{ '--hidden': !conditionStore.asideIsVisible }" class="app-aside-actions actions">
     <div class="actions__top-side">
-      <UiLogo
-        v-if="conditionStore.asideIsVisible"
-        text-size="32"
-      />
-      <button
-        class="top-side__aside-toggle-action"
-        @click="conditionStore.toggleAside"
-      >
+      <UiLogo v-if="conditionStore.asideIsVisible" text-size="32" />
+      <button class="top-side__aside-toggle-action" @click="conditionStore.toggleAside">
         <Icon :name="currentToggleIcon" size="20" />
       </button>
     </div>
     <div class="actions__bottom-side">
-      <div
-        v-for="link in topSideLinks"
-        :key="link.id"
-        class="bottom-side__link"
-      >
+      <div v-for="link in topSideLinks" :key="link.id" class="bottom-side__link">
         <UiLink
           :need-hover-effect="link.needHoverEffect"
           :text="conditionStore.asideIsVisible ? link.text : ''"
           :page-link="link.pageLink"
         >
           <template #prepend>
-            <Icon
-              :name="link.iconName"
-              size="24"
-              class="action__icon"
-            />
+            <Icon :name="link.iconName" size="24" class="action__icon" />
           </template>
         </UiLink>
       </div>
@@ -58,15 +41,15 @@ const topSideLinks: IDefaultLink[] = [
     needHoverEffect: true,
     pageLink: localePath({ name: 'index' }),
     text: t('aside.homeLink.text'),
-    iconName: 'ph:house-bold'
+    iconName: 'ph:house-bold',
   },
   {
     id: 1,
     needHoverEffect: true,
     pageLink: localePath({ name: 'search' }),
     text: t('aside.searchLink.text'),
-    iconName: 'ph:magnifying-glass'
-  }
+    iconName: 'ph:magnifying-glass',
+  },
 ]
 
 const currentToggleIcon = computed(() => {
@@ -88,7 +71,7 @@ const currentToggleIcon = computed(() => {
       padding: 0.375rem;
       background: transparent;
       border: none;
-      color: $accent-color;
+      color: var(--accent-color);
       cursor: pointer;
       &:first-child {
         padding: 0;

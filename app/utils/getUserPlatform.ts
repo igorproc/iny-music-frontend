@@ -1,4 +1,4 @@
-function useDeviceTest () {
+function useDeviceTest() {
   return [
     { device: 'Android', platform: /Android/ },
     { device: 'iPhone', platform: /iPhone/ },
@@ -12,7 +12,7 @@ function useDeviceTest () {
   ]
 }
 
-export function getUserPlatform (): string {
+export function getUserPlatform(): string {
   const userAgent: string = window.navigator.userAgent
   const allowedPlatforms = useDeviceTest()
   let userPlatform = ''
